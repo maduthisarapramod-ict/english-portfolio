@@ -44,7 +44,7 @@
             opacity: 1;
         }
 
-        /* Master Glass Dashboard Container */
+        /* Master Glass Dashboard Container - Auto scaling */
         .portfolio-hub {
             width: 100%;
             max-width: 850px;
@@ -83,7 +83,7 @@
             letter-spacing: 4px;
         }
 
-        /* 🎓 Professional Executive Badge - Ultra Focused on the New Portrait */
+        /* 🎓 Professional Executive Badge */
         .student-badge-card {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             border: 1px solid rgba(56, 189, 248, 0.25);
@@ -98,7 +98,6 @@
             overflow: hidden;
         }
 
-        /* Premium circular wrapper for the new executive avatar */
         .avatar-isolation-container {
             width: 95px;
             height: 95px;
@@ -111,7 +110,6 @@
             overflow: hidden;
         }
 
-        /* Dynamic background blur using the new image */
         .avatar-blur-bg {
             position: absolute;
             top: 0;
@@ -125,7 +123,6 @@
             z-index: 1;
         }
 
-        /* Foreground framing for the new crisp corporate close-up */
         .avatar-foreground-profile {
             position: absolute;
             top: 0;
@@ -376,7 +373,7 @@
             border: 0;
         }
 
-        /* Clean List Layout */
+        /* Table of Contents List Layout */
         .toc-list {
             list-style: none;
             padding: 0;
@@ -482,6 +479,98 @@
             0% { opacity: 0; transform: translateY(10px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+
+        /* 📱 ULTRA RESPONSIVE ENGINE (MOBILE & TABLET AUTO-ADJUSTMENTS) */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 8px; /* Reduce screen outer margins on mobile */
+            }
+
+            .portfolio-hub {
+                border-radius: 16px; /* Slightly sharper corners on phones */
+            }
+
+            .portfolio-header {
+                padding: 25px 15px;
+            }
+
+            .portfolio-header h1 {
+                font-size: 22px; /* Auto-shrink main title size */
+            }
+
+            .student-badge-card {
+                flex-direction: column; /* Stacks image above text neatly */
+                text-align: center;
+                padding: 20px 15px;
+                gap: 15px;
+            }
+
+            .student-grid {
+                grid-template-columns: 1fr; /* Force 1 item per row in grid */
+                gap: 10px;
+            }
+
+            .meta-group p {
+                text-align: center !important; /* Center student details on mobile */
+            }
+
+            .progress-container {
+                flex-direction: column; /* Stack progress text over bar */
+                gap: 8px;
+                padding: 12px 15px;
+                align-items: stretch;
+            }
+
+            .progress-label {
+                min-width: unset;
+                text-align: center;
+            }
+
+            .page-canvas {
+                padding: 20px 15px; /* Shrink content white space pad */
+                min-height: auto;
+            }
+
+            h2 {
+                font-size: 18px; /* Optimize headers for reading on screens */
+            }
+
+            p {
+                font-size: 13.5px;
+                text-align: left; /* Better paragraph rendering on narrow screens */
+            }
+
+            .toc-list li {
+                padding: 12px;
+                flex-direction: column; /* Stack Index titles & Page numbers */
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .toc-list span {
+                font-size: 13px;
+                line-height: 1.4;
+            }
+
+            .hub-footer {
+                padding: 15px 10px;
+                flex-wrap: wrap; /* Ensure navigation buttons don't shrink out of screen */
+                justify-content: center;
+            }
+
+            .nav-btn {
+                padding: 10px 16px;
+                font-size: 11px;
+                flex-grow: 1; /* Equal button sizes on mobile layouts */
+                text-align: center;
+            }
+
+            #deckIndicator {
+                width: 100%;
+                order: -1; /* Push the page indicator to the top row in mobile footer */
+                margin-bottom: 8px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -552,7 +641,7 @@
                                 <label>Enrollment Number</label>
                                 <p>UWU/ICT/24/067</p>
                             </div>
-                            <div class="meta-group" style="grid-column: span 2;">
+                            <div class="meta-group">
                                 <label>Department</label>
                                 <p class="dept-text">Department of Information and Communication Technology</p>
                             </div>

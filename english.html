@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communicative English E-Portfolio - S.S. Pramod Maduthisara</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 15px;
+            overflow-x: hidden;
+            position: relative;
+            background: #090d16;
+        }
+
+        /* 📸 Smooth Cross-Fade Background Engine */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px) brightness(0.2) saturate(1.2);
+            transform: scale(1.08);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bg-active {
+            opacity: 1;
+        }
+
+        /* Master Glass Dashboard Container */
+        .portfolio-hub {
+            width: 100%;
+            max-width: 850px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+        }
+
+        /* Modern Premium Header Section */
+        .portfolio-header {
+            padding: 35px 25px;
+            text-align: center;
+            background: rgba(2, 6, 23, 0.6);
+            border-bottom: 3px solid #38bdf8;
+        }
+
+        .portfolio-header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #38bdf8, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .portfolio-header p {
+            color: #94a3b8;
+            font-size: 12px;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        /* 🎓 Professional Executive Badge - Ultra Focused on the New Portrait */
+        .student-badge-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Premium circular wrapper for the new executive avatar */
+        .avatar-isolation-container {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            position: relative;
+            flex-shrink: 0;
+            border: 3px solid #38bdf8;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            background: #020617;
+            overflow: hidden;
+        }
+
+        /* Dynamic background blur using the new image */
+        .avatar-blur-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('WhatsApp Image 2026-06-19 at 02.32.31.jpeg');
+            background-size: 200%;
+            background-position: center 30%;
+            filter: blur(8px) brightness(0.4);
+            z-index: 1;
+        }
+
+        /* Foreground framing for the new crisp corporate close-up */
+        .avatar-foreground-profile {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            object-fit: cover;
+            object-position: center 20%; 
+            transform: scale(1.1);
+        }
+
+        .student-details-wrapper {
+            flex-grow: 1;
+            z-index: 3;
+        }
+
+        .student-badge-card h4 {
+            color: #38bdf8;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .meta-group label {
+            display: block;
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #94a3b8;
+            letter-spacing: 1.5px;
+            margin-bottom: 3px;
+        }
+
+        .meta-group p {
+            font-size: 14.5px !important;
+            font-weight: 600 !important;
+            color: #ffffff !important;
+            margin-bottom: 0 !important;
+            text-align: left !important;
+        }
+
+        .meta-group .dept-text {
+            color: #e2e8f0 !important;
+            font-size: 13.5px !important;
+        }
+
+        /* 📊 Interactive Progress Tracker Bar */
+        .progress-container {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .progress-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            font-weight: bold;
+            min-width: 110px;
+        }
+
+        .progress-bar-bg {
+            background: #1e293b;
+            height: 8px;
+            border-radius: 4px;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(to right, #38bdf8, #fbbf24);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease-out;
+        }
+
+        /* Clean White Page Content Canvas Layer */
+        .page-canvas {
+            background-color: #ffffff;
+            color: #1e293b;
+            padding: 40px;
+            min-height: 450px;
+        }
+
+        h2 {
+            color: #0f172a;
+            font-size: 22px;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .info-badge {
+            background-color: #f8fafc;
+            border-left: 5px solid #38bdf8;
+            padding: 14px 18px;
+            border-radius: 6px;
+            font-size: 13.5px;
+            color: #334155;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        /* 🎯 Academic Evaluation Tags Block */
+        .academic-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .academic-tag {
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 🖼️ Real Image Frame Layout */
+        .image-frame {
+            background-color: #0f172a; 
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+            max-height: 420px;
+        }
+
+        .content-img {
+            width: 100%;
+            height: auto;
+            max-height: 420px;
+            object-fit: contain; 
+            display: block;
+        }
+
+        h3 {
+            font-size: 15px;
+            color: #0f172a;
+            margin: 24px 0 8px 0;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        h3::before {
+            content: "◆";
+            color: #38bdf8;
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 14.5px;
+            line-height: 1.65;
+            text-align: justify;
+            color: #334155;
+            margin-bottom: 14px;
+        }
+
+        .vocab-box {
+            background: #fafafa;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #fbbf24;
+            padding: 14px;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+
+        /* 📺 Horizon Video Player Studio */
+        .youtube-bottom-stream {
+            background: #020617;
+            border-top: 2px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            width: 100%;
+        }
+
+        .video-tag {
+            color: #94a3b8;
+            font-size: 11px;
+            text-transform: uppercase;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 1px;
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .video-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .video-status span {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; 
+            height: 0;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Clean List Layout */
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .toc-list li {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toc-list li:hover {
+            background: #f0fdf4;
+            border-color: #22c55e;
+            transform: translateX(6px);
+        }
+
+        .toc-list span {
+            font-weight: 600;
+            color: #334155;
+            font-size: 14.5px;
+        }
+
+        .toc-list li:hover span {
+            color: #16a34a;
+        }
+
+        .toc-list .page-num {
+            background: #e2e8f0;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #475569;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .toc-list li:hover .page-num {
+            background: #22c55e;
+            color: white;
+        }
+
+        /* Controller Deck Footer Node */
+        .hub-footer {
+            background: #020617;
+            padding: 22px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+            color: #ffffff;
+            border: none;
+            padding: 11px 22px;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+        }
+
+        .home-btn {
+            background: #1e293b;
+            color: #94a3b8;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: none;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        #deckIndicator {
+            font-size: 12px;
+            color: #94a3b8;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .page-turn-active {
+            animation: slideTurn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideTurn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bgLayer1" class="bg-layer bg-active"></div>
+<div id="bgLayer2" class="bg-layer"></div>
+
+<div class="portfolio-hub">
+    <!-- Header Banner -->
+    <div class="portfolio-header">
+        <h1>Communicative English</h1>
+        <p>Continuous Assessment 01 — E-Portfolio</p>
+    </div>
+
+    <!-- 📊 Smart Progress Tracker -->
+    <div class="progress-container">
+        <span class="progress-label" id="progressLabel">Module Index</span>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+    </div>
+
+    <!-- Central Paper Text Display Canvas Area -->
+    <div class="page-canvas" id="pageDisplay">
+        <!-- Injected via JavaScript -->
+    </div>
+
+    <!-- 📺 SMART YOUTUBE MEDIA PLAYER -->
+    <div class="youtube-bottom-stream" id="videoMediaHub">
+        <div class="video-tag">
+            <div class="video-status"><span></span> <span id="videoTitleTag">Interview Stream Player</span></div>
+        </div>
+        <div class="video-container">
+             <iframe id="persistentIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Controller Deck Footer Node -->
+    <div class="hub-footer">
+        <button class="nav-btn" onclick="turnPageBack()">◀️ Prev</button>
+        <button class="nav-btn home-btn" onclick="goHome()">🏠 Index</button>
+        <span id="deckIndicator">Syncing Deck...</span>
+        <button class="nav-btn" onclick="turnPageForward()">Next ▶️</button>
+    </div>
+</div>
+
+<script>
+    const portfolioContent = [
+        {
+            bgImg: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200", 
+            videoUrl: "", 
+            videoLabel: "",
+            html: `
+                <!-- 🎓 Isolated Student Profile Dashboard Card -->
+                <div class="student-badge-card">
+                    <div class="avatar-isolation-container">
+                        <div class="avatar-blur-bg"></div>
+                        <img src="WhatsApp Image 2026-06-19 at 02.32.31.jpeg" class="avatar-foreground-profile" alt="S.S. Pramod Maduthisara Profile">
+                    </div>
+                    <div class="student-details-wrapper">
+                        <h4>Student Identity Dashboard</h4>
+                        <div class="student-grid">
+                            <div class="meta-group">
+                                <label>Student Name</label>
+                                <p>S.S. Pramod Maduthisara</p>
+                            </div>
+                            <div class="meta-group">
+                                <label>Enrollment Number</label>
+                                <p>UWU/ICT/24/067</p>
+                            </div>
+                            <div class="meta-group" style="grid-column: span 2;">
+                                <label>Department</label>
+                                <p class="dept-text">Department of Information and Communication Technology</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>📋 E-Portfolio Directory Index</h2>
+                <div class="info-badge">
+                    <strong>Course Component:</strong> Continuous Assessment 01<br>
+                    <strong>Academic Scope:</strong> Critical Listening & Linguistic Analysis of 10 Global Interviews.
+                </div>
+                <div class="image-frame">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800" class="content-img" alt="E-Portfolio Cover">
+                </div>
+                <p>Welcome to my E-Portfolio. Below is the full directory of 10 analyzed interview contents. Click any topic below to jump directly to its analytical breakdown:</p>
+                <ul class="toc-list">
+                    <li onclick="jumpToPage(1)"><span>01. The Diary of a CEO (Dr. Matthew Walker)</span> <span class="page-num">Page 1</span></li>
+                    <li onclick="jumpToPage(2)"><span>02. TED Talks (Lera Boroditsky)</span> <span class="page-num">Page 2</span></li>
+                    <li onclick="jumpToPage(3)"><span>03. TED Talks (Julian Treasure - How to Speak)</span> <span class="page-num">Page 3</span></li>
+                    <li onclick="jumpToPage(4)"><span>04. Jay Shetty Podcast (Tom Holland Session)</span> <span class="page-num">Page 4</span></li>
+                    <li onclick="jumpToPage(5)"><span>05. The New York Times (Art Thief Psychology)</span> <span class="page-num">Page 5</span></li>
+                    <li onclick="jumpToPage(6)"><span>06. National Geographic History (Maya Secrets)</span> <span class="page-num">Page 6</span></li>
+                    <li onclick="jumpToPage(7)"><span>07. The Diary of a CEO (Simon Sinek)</span> <span class="page-num">Page 7</span></li>
+                    <li onclick="jumpToPage(8)"><span>08. Stanford GSB (Matt Abrahams - Think Fast, Talk Smart)</span> <span class="page-num">Page 8</span></li>
+                    <li onclick="jumpToPage(9)"><span>09. TED Talks (Elon Musk Interview - Future Visions)</span> <span class="page-num">Page 9</span></li>
+                    <li onclick="jumpToPage(10)"><span>10. TED Talks (Greg Brockman: ChatGPT Potential)</span> <span class="page-num">Page 10</span></li>
+                </ul>
+            `
+        },
+        {
+            bgImg: "https://img.youtube.com/vi/Us8n8VBQn_c/maxresdefault.jpg",
+            videoUrl: "https://www.youtube.com/embed/Us8n8VBQn_c",
+            videoLabel: "Streaming: Dr. Matthew Walker Interview",
+            html: `
+                <h2>📄 Page 01: The Diary of a CEO — Steven Bartlett</h2>
+                <div class="academic-tags">
+                    <span class="academic-tag">🎧 Active Listening</span>
+                    <span class="academic-tag">🧠 Cognitive Science</span>
+                    <span class="academic-tag">📊 Analytical Review</span>
+                </div>
+                <div class="info-badge">
+                    <strong>Social Media Source:</strong> Steven Bartlett / The Diary of a CEO<br>
+                    <strong>Content Title:</strong> "World No.1 Sleep Expert: Magnesium Isn't Helping You Sleep!"<br>
+                    <strong>Reference:</strong> Walker, M. (2023). Dr. Matthew Walker on The Diary of a CEO. Interviewed by Steven Bartlett.<br>
+                    <strong>Date Accessed:</strong> May 24, 2026
+                </div>
+                <div class="image-frame">
+                    <img src="https://img.youtube.com/vi/Us8n8VBQn_c/maxresdefault.jpg" class="content-img" alt="Dr. Matthew Walker">
+                </div>
+                <h3>Critical Analysis (Summary & Opinion)</h3>
+                <p><b>Summary:</b> In this interview, neuroscientist Dr. Matthew Walker discusses how modern sleep deprivation directly impacts human focus, long-term memory, and metabolic health. He disproves basic myths about quick sleeping pills and emphasizes that a consistent 8-hour sleep window is a biological necessity for neural repair.</p>
+                <p><b>Opinion:</b> This session serves as an essential wake-up call. The host asks sharp, conversational questions which break down complex neurological data into highly relatable everyday habits.</p>
+                <h3>Reflective Growth</h3>
+                <p>I realized that sleep consistency is far more critical for cognitive performance than catching up on sleep randomly over weekends. I have started re-organizing my study schedule around regular resting hours.</p>
+                <h3>Vocabulary & Language Focus</h3>
+                <div class="vocab-box">
+                    <p>• <b>Circadian rhythm:</b> The natural, internal process that regulates the sleep-wake cycle.</p>
+                    <p>• <b>Cognitive performance:</b> The mental processes that carry out everyday tasks effectively.</p>
+                </div>
+            `
+        },
+        {
+            bgImg: "https://img.youtube.com/vi/RKK7wGAYP6k/maxresdefault.jpg",
+            videoUrl: "https://www.youtube.com/embed/RKK7wGAYP6k",
+            videoLabel: "Streaming: TED Talks Language Theory",
+            html: `
+                <h2>📄 Page 02: TED Talks</h2>
+                <div class="academic-tags">
+                    <span class="academic-tag">🗣️ Psycholinguistics</span>
+                    <span class="academic-tag">🌍 Cultural Adaptability</span>
+                    <span class="academic-tag">💡 Conceptual Thinking</span>
+                </div>
+                <div class="info-badge">
+                    <strong>Social Media Source:</strong> TED<br>
+                    <strong>Content Title:</strong> "How Language Shapes the Way We Think"<br>
+                    <strong>Reference:</strong> Boroditsky, L. (2018). How language shapes the way we think. TED Conference Presentation.<br>
+                    <strong>Date Accessed:</strong> May 26, 2026
+                </div>
+                <div class="image-frame">
+                    <img src="https://img.youtube.com/vi/RKK7wGAYP6k/maxresdefault.jpg" class="content-img" alt="Lera Boroditsky">
+                </div>
+                <h3>Critical Analysis (Summary & Opinion)</h3>
+                <p><b>Summary:</b> Cognitive scientist Lera Boroditsky demonstrates how the structures of different languages unconsciously build distinct human mindsets. By presenting varied linguistic examples of handling orientation, space, and time perception, she establishes that native grammar patterns dictate subconscious behaviors.</p>
+                <p><b>Opinion:</b> The speaker's delivery style is clear and engaging. The arguments are heavily backed by concrete visual data, which makes the complex theories of cognitive linguistics highly accessible to a global student audience.</p>
+                <h3>Reflective Growth</h3>
+                <p>This talk entirely changed how I view bilingualism. I realized that learning a new language is not just about memorizing translations, but adopting a completely alternative way to process and construct thoughts.</p>
+                <h3>Vocabulary & Language Focus</h3>
+                <div class="vocab-box">
+                    <p>• <b>Perception:</b> The capacity to see, hear, or become aware of structures through the senses.</p>
+                    <p>• <b>Linguistic determinism:</b> The idea that language and its structures limit or determine human knowledge.</p>
+                </div>
+            `
+        },
+        {
+            bgImg: "https://img.youtube.com/vi/eIho2S0ZahI/maxresdefault.jpg", 
+            videoUrl: "https://www.youtube.com/embed/eIho2S0ZahI", 
+            videoLabel: "Streaming: Powerful Speaking Techniques (Julian Treasure)",
+            html: `
+                <h2>📄 Page 03: TED Talks — Effective Communication</h2>
+                <div class="academic-tags">
+                    <span class="academic-tag">🎤 Phonetics & Delivery</span>
+                    <span class="academic-tag">✨ Authenticity</span>
+                    <span class="academic-tag">🔊 Vocal Timbre</span>
+                </div>
+                <div class="info-badge">
+                    <strong>Social Media Source:</strong> TED Conference Archive<br>
+                    <strong>Content Title:</strong> "How to speak so that people want to listen"<br>
+                    <strong>Reference:</strong> Treasure, J. (2013). How to speak so that people want to listen. TED Global Presentation.<br>
+                    <strong>Date Accessed:</strong> May 28, 2026
+                </div>
+                <div class="image-frame">
+                    <img src="https://img.youtube.com/vi/eIho2S0ZahI/maxresdefault.jpg" class="content-img" alt="Julian Treasure Communication Presentation">
+                </div>
+                <h3>Critical Analysis (Summary & Opinion)</h3>
+                <p><b>Summary:</b> Communication specialist Julian Treasure identifies toxic speaking habits such as gossip, judging, and dogmatism to avoid. He outlines the essential pillars of powerful communication wrapped in the acronym "HAIL" (Honesty, Authenticity, Integrity, Love) and demonstrates vocal tools like timbre, register, and prosody.</p>
+                <p><b>Opinion:</b> This session is a cornerstone for communicative English. Treasure’s delivery is a masterclass itself, presenting practical vocal exercises that any student can implement immediately to enhance their public speaking and academic presentation skills.</p>
+                <h3>Reflective Growth</h3>
+                <p>I realized that communication is an active physical and emotional choice, not just a random act. I have started practicing vocal warm-ups and consciously avoiding critical or judgmental language to ensure my words carry weight and empathy.</p>
+                <h3>Vocabulary & Language Focus</h3>
+                <div class="vocab-box">
+                    <p>• <b>Timbre:</b> The character or quality of a musical sound or voice as distinct from its pitch and intensity.</p>
+                    <p>• <b>Prosody:</b> The patterns of rhythm and sound used in spoken language; the melody of speech.</p>
+                </div>
+            `
+        },
+        {
+            bgImg: "https://img.youtube.com/vi/GOqEl4ADyVk/maxresdefault.jpg",
+            videoUrl: "https://www.youtube.com/embed/GOqEl4ADyVk",
+            videoLabel: "Streaming: Jay Shetty Podcast (Tom Holland)",
+            html: `
+                <h2>📄 Page 04: Jay Shetty Podcast</h2>
+                <div class="academic-tags">
+                    <span class="academic-tag">🌱 Self-Reflection</span>
+                    <span class="academic-tag">👥 Empathy & Dialogue</span>
+                    <span class="academic-tag">📱 Digital Wellness</span>
+                </div>
+                <div class="info-badge">
+                    <strong>Social Media Source:</strong> Jay Shetty<br>
+                    <strong>Content Title:</strong> "Tom Holland OPENS UP About His Sobriety & Social Media Anxiety"<br>
+                    <strong>Reference:</strong> Shetty, J. (2023). On Purpose Podcast: Tom Holland Session.<br>
+                    <strong>Date Accessed:</strong> May 30, 2026
+                </div>
+                <div class="image-frame">
+                    <img src="https://img.youtube.com/vi/GOqEl4ADyVk/maxresdefault.jpg" class="content-img" alt="Tom Holland and Jay Shetty">
+                </div>
+                <h3>Critical Analysis (Summary & Opinion)</h3>
+                <p><b>Summary:</b> Host Jay Shetty sits down with actor Tom Holland to talk openly about celebrity culture, mental health struggles, his choices to attain complete sobriety, and how stepping away from toxic social media metrics helped him control paralyzing anxiety cycles.</p>
+                <p><b>Opinion:</b> This dialogue is incredibly healthy for modern youths. Shetty’s calm, empathetic interviewing method allows a massive global icon to discuss dark struggles naturally without fears of mainstream media sensationalism.</p>
+                <h3>Reflective Growth</h3>
+                <p>I realized that public success does not guarantee inner peace. This interview taught me the importance of setting strong boundaries with digital platforms to preserve my mental health.</p>
+                <h3>Vocabulary & Language Focus</h3>
+                <div class="vocab-box">
+                    <p>• <b>Sobriety:</b> The state of being free from addictive substances or obsessive behaviors.</p>
+                    <p>• <b>Sensationalism:</b> The use of exciting or shocking stories at the expense of accuracy to provoke public interest.</p>
+                </div>
+            `
+        },
+        {
+            bgImg: "https://img.youtube.com/vi/OFAd5psBS_w/maxresdefault.jpg",
+            videoUrl: "https://www.youtube.com/embed/OFAd5psBS_w",
+            videoLabel: "Streaming: NYT Psychology Profiles",
+            html: `
+                <h2>📄 Page 05: The New York Times</h2>
+                <div class="academic-tags">
+                    <span class="academic-tag">🔍 Behavioral Studies</span>
+                    <span class="academic-tag">⚖️ Ethics & Law</span>
+                    <span class="academic-tag">📰 Investigative Media</span>
+                </div>
+                <div class="info-badge">
+                    <strong>Social Media Source:</strong> The New York Times<br>
+                    <strong>Content Title:</strong> "Inside the Mind of a Master Thief"<br>
+                    <strong>Reference:</strong> New York Times Video Editorial. (2022). Profiling High-Stakes Art Theft Operations.<br>
+                    <strong>Date Accessed:</strong> June 01, 2026
+                </div>
+                <div class="image-frame">
+                    <img src="https://img.youtube.com/vi/OFAd5psBS_w/maxresdefault.jpg" class="content-img" alt="NYT Art Thief Interview">
+                </div>
+                <h3>Critical Analysis (Summary & Opinion)</h3>
+                <p><b>Summary:</b> An analytical interview tracking the lifestyle and mindset of a retired international art thief. The investigative pieces reveal the precise criminal planning, the thrill of subverting modern security networks, and the eventual isolation, regret, and path to rehabilitation.</p>
+                <p><b>Opinion:</b> The journalism here is exceptionally well-balanced. It avoids glorifying the actual crime, opting instead to dig deep into the psychological impulses that drive individuals to execute high-stakes risks.</p>
+                <h3>Reflective Growth</h3>
+                <p>I discovered how the human mind can rationalize illegal actions under high-adrenaline situations. It emphasized that true personal accountability requires a deep look at past mistakes.</p>
+                <h3>Vocabulary & Language Focus</h3>
+                <div class="vocab-box">
+                    <p>• <b>Rationalize:</b> Attempt to explain or justify behavior with logical reasons, even if these are not appropriate.</p>
+                    <p>• <b>Rehabilitation:</b> The process of restoring someone to a normal, constructive life through therapy or education.</p>
+                </div>
+            `
+        },
+        {
+            bgImg: "https://img.youtube.com/vi/F0zo7zwdIFM/maxresdefault.jpg",
+            videoUrl: "https://www.youtube.com/embed/F0zo7zwdIFM",
+            videoLabel: "Streaming: National Geographic Archaeologist Series",
+            html: `
+                <h2>📄 Page 06: National Geographic History</h2>
+                <div class="academic-tags">
+                    <span class="academic-tag">🏛️ Historical Context</span>
+                    <span class="academic-tag">📡 Tech Application</span>
+                    <span class="academic-tag">🗺️ Discovery Structure</span>
+                </div>
+                <div class="info-badge">
+                    <strong>Social Media Source:</strong> National Geographic History<br>
+                    <strong>Content Title:</strong> "Secrets of the Maya: Uncovering Ancient Civilizations"<br>
+                    <strong>Reference:</strong> National Geographic Documentaries. (2021). New Archaeological Insights.<br>
+                    <strong>Date Accessed:</strong> June 03, 2026
+                </div>
+                <div class="image-frame">
+                    <img src="https://img.youtube.com/vi/F0zo7zwdIFM/maxresdefault.jpg" class="content-img" alt="National Geographic Maya Secrets">
+                </div>
+                <h3>Critical Analysis (Summary & Opinion)</h3>
+                <p><b>Summary:</b> This field interview highlights leading archaeologists who use modern remote sensing technology to locate hidden settlements built by the Maya civilization. The experts explain how their structural discoveries reveal complex agricultural and civil systems.</p>
+                <p><b>Opinion:</b> The integration of digital animation alongside traditional academic interviews makes this historical content thrilling. It perfectly illustrates how modern technology changes our understanding of the past.</p>
+                <h3>Reflective Growth</h3>
+                <p>I learned that ancient societies possessed advanced engineering skills long before modern industrialization. This expanded my perspective on human development and innovation.</p>
+                <h3>Vocabulary & Language Focus</h3>
+                <div class="vocab-box">
+                    <p>• <b>Infrastructure:</b> The basic physical and organizational structures needed for a society to function.</p>
+                    <p>• <b>Remote sensing:</b> Scanning of the earth from a distance, typically by satellite or high-altitude radar.</p>
+                </div>
+            `
+        },
+        {
+            bgImg: "https://img.youtube.com/vi/W4tqbEmplug/maxresdefault.jpg",
+            videoUrl: "https://www.youtube.com/embed/W4tqbEmplug",
+            videoLabel: "Streaming: DOAC Corporate Leadership Masterclass",
+            html: `
+                <h2>📄 Page 07: The Diary of a CEO</h2>
+                <div class="academic-tags">
+                    <span class="academic-tag">💼 Professional Ethos</span>
+                    <span class="academic-tag">🎯 Goal Architecture</span>
+                    <span class="academic-tag">🤝 Corporate Dialogue</span>
+                </div>
+                <div class="info-badge">
+                    <strong>Social Media Source:</strong> The Diary of a CEO<br>
+                    <strong>Content Title:</strong> "Simon Sinek: How to Find Your True Purpose in Life"<br>
+                    <strong>Reference:</strong> Sinek, S. (2022). Simon Sinek on Purpose and Leadership. Interviewed by Steven Bartlett.<br>
+                    <strong>Date Accessed:</strong> June 05, 2026
+                </div>
+                <div class="image-frame">
+                    <img src="https://img.youtube.com/vi/W4tqbEmplug/maxresdefault.jpg" class="content-img" alt="Simon Sinek Interview">
+                </div>
+                <h3>Critical Analysis (Summary & Opinion)</h3>
+                <p><b>Summary:</b> Leadership specialist Simon Sinek breaks down human motivation patterns, corporate fulfillment, and how discovering an authentic core objective (the "Why") allows professionals to build long-term career growth.</p>
+                <p><b>Opinion:</b> Sinek is an exceptionally skilled communicator. His use of simple metaphors to clarify abstract management concepts makes this interview highly actionable for students prepping for professional environments.</p>
+                <h3>Reflective Growth</h3>
+                <p>I recognized that career success and emotional satisfaction come from identifying my personal core motivations, rather than just pursuing financial goals blindly.</p>
+                <h3>Vocabulary & Language Focus</h3>
+                <div class="vocab-box">
+                    <p>• <b>Fulfillment:</b> A feeling of deep satisfaction or happiness derived from achieving one's potential.</p>
+                    <p>• <b>Metaphor:</b> A figure of speech in which a word or phrase is applied to an object or action to which it is not literally applicable.</p>
+                </div>
+            `
+        },
+        {
+            bgImg: "https://img.youtube.com/vi/HAnw168huqA/maxresdefault.jpg", 
+            videoUrl: "https://www.youtube.com/embed/HAnw168huqA", 
+            videoLabel: "Streaming: Stanford GSB — Matt Abrahams",
+            html: `
+                <h2>📄 Page 08: Stanford GSB — Communication Techniques</h2>
+                <div class="academic-tags">
+                    <span class="academic-tag">⚡ Spontaneous Speech</span>
+                    <span class="academic-tag">📉 Stress Regulation</span>
+                    <span class="academic-tag">🏫 Higher Pedagogy</span>
+                </div>
+                <div class="info-badge">
+                    <strong>Social Media Source:</strong> Stanford Graduate School of Business<br>
+                    <strong>Content Title:</strong> "Think Fast, Talk Smart: Communication Techniques"<br>
+                    <strong>Reference:</strong> Abrahams, M. (2014). Think Fast, Talk Smart. Stanford GSB Instructional Lecture.<br>
+                    <strong>Date Accessed:</strong> June 07, 2026
+                </div>
+                <div class="image-frame">
+                    <img src="https://img.youtube.com/vi/HAnw168huqA/maxresdefault.jpg" class="content-img" alt="Matt Abrahams Stanford Presentation Image">
+                </div>
+                <h3>Critical Analysis (Summary & Opinion)</h3>
+                <p><b>Summary:</b> In this highly practical lecture, communication expert Matt Abrahams outlines actionable strategies for spontaneous speaking. He focuses heavily on anxiety management techniques, shifting from a performance mindset to a conversational approach, and utilizing clean structures like "What? So What? Now What?" to manage unscripted questions effectively.</p>
+                <p><b>Opinion:</b> This session is extremely valuable for students struggling with presentation anxiety. Abrahams provides a realistic blueprint that replaces the fear of speaking perfectly with practical frameworks to organize thoughts dynamically on the spot.</p>
+                <h3>Reflective Growth</h3>
+                <p>I learned that impromptu speaking is a trainable skill, not a genetic trait. Applying the structured response models has significantly helped me manage my anxiety during unexpected Q&A sessions in class.</p>
+                <h3>Vocabulary & Language Focus</h3>
+                <div class="vocab-box">
+                    <p>• <b>Spontaneous speaking:</b> The act of delivering a coherent message effectively without prior structural planning or rehearsal.</p>
+                    <p>• <b>Cognitive reframing:</b> A psychological technique used to identify and change negative or stressful thought patterns.</p>
+                </div>
+            `
+        },
+        {
+            bgImg: "https://img.youtube.com/vi/cdZZpaB2kDM/maxresdefault.jpg",
+            videoUrl: "https://www.youtube.com/embed/cdZZpaB2kDM", 
+            videoLabel: "Streaming: TED Talks — Future Tech and Innovation",
+            html: `
+                <h2>📄 Page 09: TED Talks — Elon Musk</h2>
+                <div class="academic-tags">
+                    <span class="academic-tag">🚀 Visionary Framing</span>
+                    <span class="academic-tag">🌱 Sustainability</span>
+                    <span class="academic-tag">🔭 Macro Linguistics</span>
+                </div>
+                <div class="info-badge">
+                    <strong>Social Media Source:</strong> TED Conference Archive<br>
+                    <strong>Content Title:</strong> "Elon Musk: A future worth choosing"<br>
+                    <strong>Reference:</strong> Musk, E. (2022). Elon Musk: A future worth choosing. Interviewed by Chris Anderson.<br>
+                    <strong>Date Accessed:</strong> June 09, 2026
+                </div>
+                <div class="image-frame">
+                    <img src="https://img.youtube.com/vi/cdZZpaB2kDM/maxresdefault.jpg" class="content-img" alt="Elon Musk TED Interview Image">
+                </div>
+                <h3>Critical Analysis (Summary & Opinion)</h3>
+                <p><b>Summary:</b> In this high-profile conversation, tech visionary Elon Musk talks with head of TED Chris Anderson about massive global engineering changes, sustainable resource ecosystems, underground transit structures, and long-term space colonization goals.</p>
+                <p><b>Opinion:</b> This session highlights an extremely complex communication layout. Despite Musk's signature speech pauses, his structured conceptual arguments and conversational delivery successfully break down massive structural goals into an inspiring and clear public roadmap.</p>
+                <h3>Reflective Growth</h3>
+                <p>This dialogue completely shifted my perspective on presentation frameworks. I realized that a speaker's impact relies on authenticity and the clarity of the underlying conceptual ideas, rather than just smooth, superficial presentation delivery.</p>
+                <h3>Vocabulary & Language Focus</h3>
+                <div class="vocab-box">
+                    <p>• <b>Sustainability:</b> The capacity to maintain or support a process or resource balance continuously over time.</p>
+                    <p>• <b>Colonization:</b> The action of establishing control, community settlements, or functional systems over foreign or new territories.</p>
+                </div>
+            `
+        },
+        {
+            bgImg: "C_78DM8fG6E-HD (1).jpg",
+            videoUrl: "https://www.youtube.com/embed/C_78DM8fG6E",
+            videoLabel: "Streaming: TED Talks — OpenAI Potential",
+            html: `
+                <h2>📄 Page 10: TED Talks — OpenAI Presentation</h2>
+                <div class="academic-tags">
+                    <span class="academic-tag">🤖 Technical Discourse</span>
+                    <span class="academic-tag">🖥️ UI Design Strategy</span>
+                    <span class="academic-tag">🔮 Applied Innovation</span>
+                </div>
+                <div class="info-badge">
+                    <strong>Social Media Source:</strong> TED Conference Archive / Tech Series<br>
+                    <strong>Content Title:</strong> "The Inside Story of ChatGPT's Astonishing Potential"<br>
+                    <strong>Reference:</strong> Brockman, G. (2023). Greg Brockman on the Future of OpenAI. Interviewed by Chris Anderson.<br>
+                    <strong>Date Accessed:</strong> June 11, 2026
+                </div>
+                <div class="image-frame">
+                    <img src="C_78DM8fG6E-HD (1).jpg" class="content-img" alt="Greg Brockman OpenAI Interview Image">
+                </div>
+                <h3>Critical Analysis (Summary & Opinion)</h3>
+                <p><b>Summary:</b> OpenAI co-founder Greg Brockman demonstrates the unreleased features and development strategies behind advanced artificial intelligence models. He highlights how complex neural patterns are designed to interpret real human intent dynamically through conversation.</p>
+                <p><b>Opinion:</b> This presentation is visually captivating. By utilizing an organic, conversational delivery alongside live tech demonstrations, Brockman successfully transforms dense artificial intelligence parameters into highly engaging communicative material for general audiences.</p>
+                <h3>Reflective Growth</h3>
+                <p>I understood that technological progress requires strong structural communication to bridge the gap between complex software design and public comprehension. This has inspired me to study technical presentation techniques more deeply.</p>
+                <h3>Vocabulary & Language Focus</h3>
+                <div class="vocab-box">
+                    <p>• <b>Generative AI:</b> High-capacity neural networks built to create coherent text, media, or structures from historical patterns.</p>
+                    <p>• <b>User interface:</b> The visual and interactive framework that acts as a bridge for communication between a human operator and software logic.</p>
+                </div>
+            `
+        }
+    ];
+
+    let currentPageIndex = 0;
+
+    // Synchronize UI Display Canvas
+    function renderPage(index) {
+        const pageCanvas = document.getElementById("pageDisplay");
+        const videoHub = document.getElementById("videoMediaHub");
+        const videoIframe = document.getElementById("persistentIframe");
+        const videoTitle = document.getElementById("videoTitleTag");
+        const deckIndicator = document.getElementById("deckIndicator");
+        const progressBar = document.getElementById("progressBar");
+        const progressLabel = document.getElementById("progressLabel");
+
+        // Trigger Page Animation
+        pageCanvas.classList.remove("page-turn-active");
+        void pageCanvas.offsetWidth; 
+        pageCanvas.classList.add("page-turn-active");
+
+        // Inject Content HTML
+        pageCanvas.innerHTML = portfolioContent[index].html;
+
+        // Sync Background Layers
+        const layer1 = document.getElementById("bgLayer1");
+        const layer2 = document.getElementById("bgLayer2");
+        const targetImg = portfolioContent[index].bgImg;
+
+        if (layer1.classList.contains("bg-active")) {
+            layer2.style.backgroundImage = `url('${targetImg}')`;
+            layer1.classList.remove("bg-active");
+            layer2.classList.add("bg-active");
+        } else {
+            layer1.style.backgroundImage = `url('${targetImg}')`;
+            layer2.classList.remove("bg-active");
+            layer1.classList.add("bg-active");
+        }
+
+        // Handle Active Streaming Video Node
+        if (portfolioContent[index].videoUrl) {
+            videoHub.style.display = "block";
+            videoTitle.innerText = portfolioContent[index].videoLabel;
+            if (videoIframe.src !== portfolioContent[index].videoUrl) {
+                videoIframe.src = portfolioContent[index].videoUrl;
+            }
+        } else {
+            videoHub.style.display = "none";
+            videoIframe.src = "";
+        }
+
+        // Sync Progress Indicators
+        if (index === 0) {
+            deckIndicator.innerText = "INDEX MANIFEST";
+            progressLabel.innerText = "Module Index";
+            progressBar.style.width = "0%";
+        } else {
+            deckIndicator.innerText = `NODE PROGRESS: ${index} / 10`;
+            progressLabel.innerText = `Analysis Progress`;
+            let fillPercentage = (index / (portfolioContent.length - 1)) * 100;
+            progressBar.style.width = `${fillPercentage}%`;
+        }
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Navigation Controls
+    function turnPageForward() {
+        if (currentPageIndex < portfolioContent.length - 1) {
+            currentPageIndex++;
+        } else {
+            currentPageIndex = 0;
+        }
+        renderPage(currentPageIndex);
+    }
+
+    function turnPageBack() {
+        if (currentPageIndex > 0) {
+            currentPageIndex--;
+        } else {
+            currentPageIndex = portfolioContent.length - 1;
+        }
+        renderPage(currentPageIndex);
+    }
+
+    function goHome() {
+        currentPageIndex = 0;
+        renderPage(currentPageIndex);
+    }
+
+    function jumpToPage(targetPageNum) {
+        if(targetPageNum >= 0 && targetPageNum < portfolioContent.length) {
+            currentPageIndex = targetPageNum;
+            renderPage(currentPageIndex);
+        }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+        renderPage(0);
+    });
+</script>
+</body>
+</html>

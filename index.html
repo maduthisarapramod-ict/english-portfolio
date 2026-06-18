@@ -44,7 +44,7 @@
             opacity: 1;
         }
 
-        /* Master Glass Dashboard Container - Auto scaling */
+        /* Master Glass Dashboard Container */
         .portfolio-hub {
             width: 100%;
             max-width: 850px;
@@ -83,7 +83,7 @@
             letter-spacing: 4px;
         }
 
-        /* 🎓 Professional Executive Badge */
+        /* 🎓 Professional Executive Badge - Fixed Overflow for Mobile */
         .student-badge-card {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             border: 1px solid rgba(56, 189, 248, 0.25);
@@ -95,7 +95,6 @@
             align-items: center;
             gap: 25px;
             position: relative;
-            overflow: hidden;
         }
 
         .avatar-isolation-container {
@@ -138,6 +137,7 @@
         .student-details-wrapper {
             flex-grow: 1;
             z-index: 3;
+            width: 100%;
         }
 
         .student-badge-card h4 {
@@ -149,10 +149,11 @@
             font-weight: 700;
         }
 
+        /* Redesigned Clean Layout Grid */
         .student-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
+            grid-template-columns: 1fr;
+            gap: 12px;
         }
 
         .meta-group label {
@@ -170,6 +171,7 @@
             color: #ffffff !important;
             margin-bottom: 0 !important;
             text-align: left !important;
+            word-wrap: break-word;
         }
 
         .meta-group .dept-text {
@@ -480,14 +482,14 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* 📱 ULTRA RESPONSIVE ENGINE (MOBILE & TABLET AUTO-ADJUSTMENTS) */
+        /* 📱 MOBILE RESPONSIVE ADAPTATIONS */
         @media (max-width: 768px) {
             body {
-                padding: 10px 8px; /* Reduce screen outer margins on mobile */
+                padding: 10px 8px;
             }
 
             .portfolio-hub {
-                border-radius: 16px; /* Slightly sharper corners on phones */
+                border-radius: 16px;
             }
 
             .portfolio-header {
@@ -495,27 +497,28 @@
             }
 
             .portfolio-header h1 {
-                font-size: 22px; /* Auto-shrink main title size */
+                font-size: 22px;
             }
 
             .student-badge-card {
-                flex-direction: column; /* Stacks image above text neatly */
+                flex-direction: column;
                 text-align: center;
                 padding: 20px 15px;
                 gap: 15px;
             }
 
             .student-grid {
-                grid-template-columns: 1fr; /* Force 1 item per row in grid */
-                gap: 10px;
+                grid-template-columns: 1fr;
+                gap: 12px;
+                width: 100%;
             }
 
             .meta-group p {
-                text-align: center !important; /* Center student details on mobile */
+                text-align: center !important;
             }
 
             .progress-container {
-                flex-direction: column; /* Stack progress text over bar */
+                flex-direction: column;
                 gap: 8px;
                 padding: 12px 15px;
                 align-items: stretch;
@@ -527,22 +530,22 @@
             }
 
             .page-canvas {
-                padding: 20px 15px; /* Shrink content white space pad */
+                padding: 25px 15px;
                 min-height: auto;
             }
 
             h2 {
-                font-size: 18px; /* Optimize headers for reading on screens */
+                font-size: 18px;
             }
 
             p {
                 font-size: 13.5px;
-                text-align: left; /* Better paragraph rendering on narrow screens */
+                text-align: left;
             }
 
             .toc-list li {
                 padding: 12px;
-                flex-direction: column; /* Stack Index titles & Page numbers */
+                flex-direction: column;
                 align-items: flex-start;
                 gap: 8px;
             }
@@ -554,21 +557,31 @@
 
             .hub-footer {
                 padding: 15px 10px;
-                flex-wrap: wrap; /* Ensure navigation buttons don't shrink out of screen */
+                flex-wrap: wrap;
                 justify-content: center;
             }
 
             .nav-btn {
                 padding: 10px 16px;
                 font-size: 11px;
-                flex-grow: 1; /* Equal button sizes on mobile layouts */
+                flex-grow: 1;
                 text-align: center;
             }
 
             #deckIndicator {
                 width: 100%;
-                order: -1; /* Push the page indicator to the top row in mobile footer */
+                order: -1;
                 margin-bottom: 8px;
+            }
+        }
+
+        /* Larger Desktop View Grid Layout Adjustment */
+        @media (min-width: 550px) {
+            .student-grid {
+                grid-template-columns: repeat(2, 1fr); /* Two columns on larger displays */
+            }
+            .student-grid .meta-group:last-child {
+                grid-column: span 2; /* Department spans fully */
             }
         }
     </style>

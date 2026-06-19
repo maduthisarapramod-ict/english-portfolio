@@ -3,1007 +3,537 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English E-Portfolio - S.S. Pramod Maduthisara</title>
+    <title>Communicative English (CA 01) - E-Portfolio</title>
     <style>
-        * {
-            box-sizing: border-box;
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
         }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: #f8fafc;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 15px;
-            overflow-x: hidden;
-            position: relative;
-            background: #090d16;
-        }
-
-        .bg-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
-            filter: blur(20px) brightness(0.2) saturate(1.2);
-            transform: scale(1.08);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .bg-active {
-            opacity: 1;
-        }
-
-        .portfolio-hub {
-            width: 100%;
-            max-width: 850px;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
-            overflow: hidden;
-        }
-
-        .portfolio-header {
-            padding: 35px 25px;
+        header {
+            background-color: var(--primary-color);
+            color: white;
             text-align: center;
-            background: rgba(2, 6, 23, 0.6);
-            border-bottom: 3px solid #38bdf8;
+            padding: 2.5rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .portfolio-header h1 {
-            font-size: 28px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, #38bdf8, #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .portfolio-header p {
-            color: #94a3b8;
-            font-size: 12px;
-            margin-top: 8px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
-
-        .student-badge-card {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .avatar-isolation-container {
-            width: 95px;
-            height: 95px;
-            border-radius: 50%;
-            position: relative;
-            flex-shrink: 0;
-            border: 3px solid #38bdf8;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-            background: #020617;
-            overflow: hidden;
-        }
-
-        .avatar-blur-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('WhatsApp Image 2026-06-19 at 02.32.31.jpeg');
-            background-size: 200%;
-            background-position: center 30%;
-            filter: blur(8px) brightness(0.4);
-            z-index: 1;
-        }
-
-        .avatar-foreground-profile {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            object-fit: cover;
-            object-position: center 20%; 
-            transform: scale(1.1);
-        }
-
-        .student-details-wrapper {
-            flex-grow: 1;
-            z-index: 3;
-        }
-
-        .student-badge-card h4 {
-            color: #38bdf8;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .student-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-        }
-
-        .meta-group label {
-            display: block;
-            font-size: 10px;
-            text-transform: uppercase;
-            color: #94a3b8;
-            letter-spacing: 1.5px;
-            margin-bottom: 3px;
-        }
-
-        .meta-group p {
-            font-size: 14.5px !important;
-            font-weight: 600 !important;
-            color: #ffffff !important;
-            margin-bottom: 0 !important;
-            text-align: left !important;
-        }
-
-        .meta-group .dept-text {
-            color: #e2e8f0 !important;
-            font-size: 13.5px !important;
-        }
-
-        .progress-container {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .progress-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: #94a3b8;
-            letter-spacing: 1px;
-            font-weight: bold;
-            min-width: 110px;
-        }
-
-        .progress-bar-bg {
-            background: #1e293b;
-            height: 8px;
-            border-radius: 4px;
-            flex-grow: 1;
-            overflow: hidden;
-        }
-
-        .progress-bar-fill {
-            background: linear-gradient(to right, #38bdf8, #fbbf24);
-            height: 100%;
-            width: 0%;
-            transition: width 0.5s ease-out;
-        }
-
-        .page-canvas {
-            background-color: #ffffff;
-            color: #1e293b;
-            padding: 40px;
-            min-height: 450px;
-        }
-
-        h2 {
-            color: #0f172a;
-            font-size: 22px;
-            margin-bottom: 18px;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .info-badge {
-            background-color: #f8fafc;
-            border-left: 5px solid #38bdf8;
-            padding: 14px 18px;
-            border-radius: 6px;
-            font-size: 13.5px;
-            color: #334155;
-            margin-bottom: 25px;
-            line-height: 1.6;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
-        }
-
-        .academic-tags {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .academic-tag {
-            background: #f1f5f9;
-            color: #475569;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            border: 1px solid #e2e8f0;
-        }
-
-        .image-frame {
-            background-color: #0f172a; 
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-            margin-bottom: 25px;
-            border: 1px solid #e2e8f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: auto;
-            max-height: 420px;
-        }
-
-        .content-img {
-            width: 100%;
-            height: auto;
-            max-height: 420px;
-            object-fit: cover; 
-            display: block;
-        }
-
-        h3 {
-            font-size: 15px;
-            color: #0f172a;
-            margin: 24px 0 8px 0;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 700;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 6px;
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
             letter-spacing: 0.5px;
         }
 
-        h3::before {
-            content: "◆";
-            color: #38bdf8;
-            font-size: 12px;
+        header p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
         }
 
-        p {
-            font-size: 14.5px;
-            line-height: 1.65;
-            text-align: justify;
-            color: #334155;
-            margin-bottom: 14px;
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem 2rem 1.5rem;
         }
 
-        .vocab-box {
-            background: #fafafa;
-            border: 1px solid #e2e8f0;
-            border-left: 4px solid #fbbf24;
-            padding: 14px;
+        .portfolio-card {
+            background: var(--card-bg);
             border-radius: 8px;
-            margin-top: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 5px solid var(--accent-color);
+            transition: transform 0.2s ease;
         }
 
-        .youtube-bottom-stream {
-            background: #020617;
-            border-top: 2px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            width: 100%;
-        }
-
-        .video-tag {
-            color: #94a3b8;
-            font-size: 11px;
-            text-transform: uppercase;
-            padding: 12px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            letter-spacing: 1px;
-            background: rgba(15, 23, 42, 0.9);
-        }
-
-        .video-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .video-status span {
-            width: 8px;
-            height: 8px;
-            background: #22c55e;
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 8px #22c55e;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; 
-            height: 0;
-            background: #000;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .toc-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 15px;
-        }
-
-        .toc-list li {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            padding: 14px 18px;
-            margin-bottom: 10px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .toc-list li:hover {
-            background: #f0fdf4;
-            border-color: #22c55e;
-            transform: translateX(6px);
-        }
-
-        .toc-list span {
-            font-weight: 600;
-            color: #334155;
-            font-size: 14.5px;
-        }
-
-        .toc-list li:hover span {
-            color: #16a34a;
-        }
-
-        .toc-list .page-num {
-            background: #e2e8f0;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 11px;
-            color: #475569;
-            font-weight: 700;
-            transition: all 0.2s;
-        }
-
-        .toc-list li:hover .page-num {
-            background: #22c55e;
-            color: white;
-        }
-
-        .hub-footer {
-            background: #020617;
-            padding: 22px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            gap: 10px;
-        }
-
-        .nav-btn {
-            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
-            color: #ffffff;
-            border: none;
-            padding: 11px 22px;
-            font-weight: 700;
-            font-size: 12px;
-            text-transform: uppercase;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
-        }
-
-        .home-btn {
-            background: #1e293b;
-            color: #94a3b8;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: none;
-        }
-
-        .nav-btn:hover {
+        .portfolio-card:hover {
             transform: translateY(-2px);
-            opacity: 0.95;
         }
 
-        #deckIndicator {
-            font-size: 12px;
-            color: #94a3b8;
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .page-number {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .date-badge {
+            background-color: #edf2f7;
+            color: #4a5568;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 1px;
+        }
+
+        .content-title {
+            color: var(--secondary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .meta-info {
+            background-color: #f7fafc;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .meta-info strong {
+            color: var(--primary-color);
+        }
+
+        .section-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 1rem;
+            margin-bottom: 0.3rem;
+            font-size: 1.05rem;
+        }
+
+        .section-content {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .vocabulary-box {
+            background-color: #ebf8ff;
+            border: 1px solid #bee3f8;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1.2rem;
+        }
+
+        .vocabulary-title {
+            font-weight: bold;
+            color: #2b6cb0;
+            margin-bottom: 0.5rem;
+        }
+
+        .vocabulary-list {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        .vocabulary-list li {
+            margin-bottom: 0.4rem;
+        }
+
+        .vocabulary-list strong {
+            color: #2c5282;
+        }
+
+        /* Animated Thank You Card section */
+        .thank-you-section {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            padding: 3.5rem 2rem;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
             text-align: center;
-            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
         }
 
-        .page-turn-active {
-            animation: slideTurn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .thank-you-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem auto;
+            animation: pulse 2s infinite ease-in-out;
         }
 
-        @keyframes slideTurn {
-            0% { opacity: 0; transform: translateY(10px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .thank-you-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
         }
 
-        .thankyou-container {
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .thankyou-title {
-            font-size: 26px;
-            font-weight: 800;
-            color: #0f172a;
-            margin-top: 15px;
+        .thank-you-text {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
             letter-spacing: 1px;
-            text-transform: uppercase;
+            font-family: 'Georgia', serif;
+            font-style: italic;
         }
 
-        .thankyou-sub {
-            font-size: 14px;
-            color: #64748b;
-            margin-top: 5px;
-            font-weight: 500;
+        .thank-you-subtext {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin: 0 auto;
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #718096;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            background-color: #ffffff;
         }
     </style>
 </head>
 <body>
 
-<div id="bgLayer1" class="bg-layer bg-active"></div>
-<div id="bgLayer2" class="bg-layer"></div>
+    <header>
+        <h1>COMMUNICATIVE ENGLISH (CA 01)</h1>
+        <p>Continuous Assessment E-Portfolio Dashboard</p>
+    </header>
 
-<div class="portfolio-hub">
-    <div class="portfolio-header">
-        <h1>Communicative English</h1>
-        <p>Continuous Assessment 01 — E-Portfolio</p>
-    </div>
+    <div class="container">
 
-    <div class="progress-container">
-        <span class="progress-label" id="progressLabel">Module Index</span>
-        <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="progressBar"></div>
-        </div>
-    </div>
-
-    <div class="page-canvas" id="pageDisplay">
-        <!-- JS Input -->
-    </div>
-
-    <div class="youtube-bottom-stream" id="videoMediaHub">
-        <div class="video-tag">
-            <div class="video-status"><span></span> <span id="videoTitleTag">Interview Stream Player</span></div>
-        </div>
-        <div class="video-container">
-             <iframe id="persistentIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <div class="hub-footer">
-        <button class="nav-btn" onclick="turnPageBack()">◀️ Prev</button>
-        <button class="nav-btn home-btn" onclick="goHome()">🏠 Index</button>
-        <span id="deckIndicator">Syncing Deck...</span>
-        <button class="nav-btn" onclick="turnPageForward()">Next ▶️</button>
-    </div>
-</div>
-
-<script>
-    const portfolioContent = [
-        {
-            bgImg: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200", 
-            videoUrl: "", 
-            videoLabel: "",
-            html: `
-                <div class="student-badge-card">
-                    <div class="avatar-isolation-container">
-                        <div class="avatar-blur-bg"></div>
-                        <img src="WhatsApp Image 2026-06-19 at 02.32.31.jpeg" class="avatar-foreground-profile" alt="Profile">
-                    </div>
-                    <div class="student-details-wrapper">
-                        <h4>Student Identity Dashboard</h4>
-                        <div class="student-grid">
-                            <div class="meta-group">
-                                <label>Student Name</label>
-                                <p>S.S. Pramod Maduthisara</p>
-                            </div>
-                            <div class="meta-group">
-                                <label>Enrollment Number</label>
-                                <p>UWU/ICT/24/067</p>
-                            </div>
-                            <div class="meta-group" style="grid-column: span 2;">
-                                <label>Department</label>
-                                <p class="dept-text">Department of Information and Communication Technology</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h2>📋 E-Portfolio Directory Index</h2>
-                <div class="info-badge">
-                    <strong>Course Component:</strong> Continuous Assessment 01<br>
-                    <strong>Academic Scope:</strong> Critical Listening & Linguistic Analysis of 10 Global Interviews.
-                </div>
-                <div class="image-frame">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800" class="content-img" alt="Cover">
-                </div>
-                <p>Welcome to my portfolio. Here is the list of 10 interviews I listened to and analyzed. Click any topic below to see the details:</p>
-                <ul class="toc-list">
-                    <li onclick="jumpToPage(1)"><span>01. The Diary of a CEO (Dr. Matthew Walker)</span> <span class="page-num">Page 1</span></li>
-                    <li onclick="jumpToPage(2)"><span>02. TED Talks (Lera Boroditsky)</span> <span class="page-num">Page 2</span></li>
-                    <li onclick="jumpToPage(3)"><span>03. TED Talks (Julian Treasure - How to Speak)</span> <span class="page-num">Page 3</span></li>
-                    <li onclick="jumpToPage(4)"><span>04. Jay Shetty Podcast (Tom Holland Session)</span> <span class="page-num">Page 4</span></li>
-                    <li onclick="jumpToPage(5)"><span>05. The New York Times (Art Thief Psychology)</span> <span class="page-num">Page 5</span></li>
-                    <li onclick="jumpToPage(6)"><span>06. National Geographic History (Maya Secrets)</span> <span class="page-num">Page 6</span></li>
-                    <li onclick="jumpToPage(7)"><span>07. The Diary of a CEO (Simon Sinek)</span> <span class="page-num">Page 7</span></li>
-                    <li onclick="jumpToPage(8)"><span>08. Stanford GSB (Matt Abrahams - Think Fast, Talk Smart)</span> <span class="page-num">Page 8</span></li>
-                    <li onclick="jumpToPage(9)"><span>09. TED Talks (Elon Musk Interview)</span> <span class="page-num">Page 9</span></li>
-                    <li onclick="jumpToPage(10)"><span>10. TED Talks (Greg Brockman: ChatGPT Potential)</span> <span class="page-num">Page 10</span></li>
-                    <li onclick="jumpToPage(11)"><span>✨ Concluding Session</span> <span class="page-num">Page 11</span></li>
+        <!-- Page 01 -->
+        <div class="portfolio-card">
+            <div class="card-header">
+                <div class="page-number">📄 Page 01: The Diary of a CEO</div>
+                <div class="date-badge">Accessed: May 24, 2026</div>
+            </div>
+            <h2 class="content-title">"World No.1 Sleep Expert: Magnesium Isn't Helping You Sleep!"</h2>
+            <div class="meta-info">
+                <strong>Reference:</strong> The Diary of a CEO YouTube Channel (Published: April 15, 2024)
+            </div>
+            
+            <div class="section-title">Summary:</div>
+            <div class="section-content">In this structural interview, host Steven Bartlett conversations with prominent neuroscientist and sleep expert Dr. Matthew Walker. The core concept revolves around human sleep hygiene and brain mechanics. Dr. Walker explains how a chronic lack of sleep actively damages short-term memory consolidation, outlines why synthetic sleeping pills fail to replicate natural deep sleep cycles, and stresses that average adults strictly require 8 hours of quality rest.</div>
+            
+            <div class="section-title">Your Opinion:</div>
+            <div class="section-content">It is an incredibly valuable source for university students as Dr. Walker explains complicated scientific facts in layman's terms.</div>
+            
+            <div class="section-title">Reflective Growth:</div>
+            <div class="section-content">I've learned that a consistent daily sleep pattern has more benefits than trying to catch up with the sleep during weekends.</div>
+            
+            <div class="vocabulary-box">
+                <div class="vocabulary-title">Vocabulary Expansion</div>
+                <ul class="vocabulary-list">
+                    <li><strong>Circadian rhythm:</strong> The body's natural internal biological clock.</li>
+                    <li><strong>Cognitive performance:</strong> The operational efficiency of human brain functioning.</li>
                 </ul>
-            `
-        },
-        {
-            bgImg: "https://img.youtube.com/vi/Us8n8VBQn_c/maxresdefault.jpg",
-            videoUrl: "https://www.youtube.com/embed/Us8n8VBQn_c",
-            videoLabel: "Streaming: Dr. Matthew Walker Interview",
-            html: `
-                <h2>📄 Page 01: The Diary of a CEO — Steven Bartlett</h2>
-                <div class="academic-tags">
-                    <span class="academic-tag">🎧 Listening</span>
-                    <span class="academic-tag">🧠 Brain Science</span>
-                    <span class="academic-tag">📊 Review</span>
-                </div>
-                <div class="info-badge">
-                    <strong>Source:</strong> Steven Bartlett / The Diary of a CEO<br>
-                    <strong>Title:</strong> "World No.1 Sleep Expert: Magnesium Isn't Helping You Sleep!"
-                </div>
-                <div class="image-frame">
-                    <img src="https://img.youtube.com/vi/Us8n8VBQn_c/maxresdefault.jpg" class="content-img" alt="Dr. Matthew Walker">
-                </div>
-                <h3>Summary and My Opinion</h3>
-                <p><b>Summary:</b> In this video, sleep expert Dr. Matthew Walker talks about why good sleep is very important for our brain. He says that if we do not sleep enough, our brain cannot make new memories easily. He also explains that normal sleep pills do not give us natural sleep; they just make us lose consciousness. He advises everyone to get 8 hours of regular sleep every night to keep the brain healthy and clean.</p>
-                <p><b>My Opinion:</b> I think this interview is very helpful. The host asks good, simple questions. Dr. Walker explains hard scientific facts in an easy way. This is a must-watch video for students who want to study better.</p>
-                <h3>What I Learnt</h3>
-                <p>I learnt that sleeping at the same time every day is better than sleeping extra hours on weekends. I am now trying to change my daily routine to get good sleep.</p>
-                <h3>Vocabulary</h3>
-                <div class="vocab-box">
-                    <p>• <b>Circadian rhythm:</b> The internal body clock that controls when we sleep and wake up.</p>
-                    <p>• <b>Cognitive performance:</b> How well our brain can think, learn, and do tasks.</p>
-                </div>
-            `
-        },
-        {
-            bgImg: "https://img.youtube.com/vi/RKK7wGAYP6k/maxresdefault.jpg",
-            videoUrl: "https://www.youtube.com/embed/RKK7wGAYP6k",
-            videoLabel: "Streaming: TED Talks Language Theory",
-            html: `
-                <h2>📄 Page 02: TED Talks — Lera Boroditsky</h2>
-                <div class="academic-tags">
-                    <span class="academic-tag">🗣️ Language</span>
-                    <span class="academic-tag">🌍 Culture</span>
-                    <span class="academic-tag">💡 Mindset</span>
-                </div>
-                <div class="info-badge">
-                    <strong>Source:</strong> TED<br>
-                    <strong>Title:</strong> "How Language Shapes the Way We Think"
-                </div>
-                <div class="image-frame">
-                    <img src="https://img.youtube.com/vi/RKK7wGAYP6k/maxresdefault.jpg" class="content-img" alt="Lera Boroditsky">
-                </div>
-                <h3>Summary and My Opinion</h3>
-                <p><b>Summary:</b> Scientist Lera Boroditsky explains how the language we speak changes the way our mind works. She shows examples of different cultures. For example, some groups of people use directions (like North, South, East, West) instead of saying "left" or "right". Because of this, their brains are always aware of where they are standing. She shows that language is not just for talking, but it changes how we see time, colors, and the world.</p>
-                <p><b>My Opinion:</b> The speaker is very clear and nice to listen to. She uses easy examples and pictures. This video helps us understand how different people around the world think in different ways.</p>
-                <h3>What I Learnt</h3>
-                <p>This video showed me that learning a new language is not just about words. It actually helps us see life from a completely different point of view.</p>
-                <h3>Vocabulary</h3>
-                <div class="vocab-box">
-                    <p>• <b>Perception:</b> The way you notice, see, or think about something.</p>
-                    <p>• <b>Linguistic determinism:</b> The idea that the language you speak shapes your thoughts and limits your knowledge.</p>
-                </div>
-            `
-        },
-        {
-            bgImg: "https://img.youtube.com/vi/eIho2S0ZahI/maxresdefault.jpg", 
-            videoUrl: "https://www.youtube.com/embed/eIho2S0ZahI", 
-            videoLabel: "Streaming: Powerful Speaking Techniques",
-            html: `
-                <h2>📄 Page 03: TED Talks — Julian Treasure</h2>
-                <div class="academic-tags">
-                    <span class="academic-tag">🎤 Speaking</span>
-                    <span class="academic-tag">✨ Voice</span>
-                    <span class="academic-tag">🔊 Communication</span>
-                </div>
-                <div class="info-badge">
-                    <strong>Source:</strong> TED Conference Archive<br>
-                    <strong>Title:</strong> "How to speak so that people want to listen"
-                </div>
-                <div class="image-frame">
-                    <img src="https://img.youtube.com/vi/eIho2S0ZahI/maxresdefault.jpg" class="content-img" alt="Julian Treasure">
-                </div>
-                <h3>Summary and My Opinion</h3>
-                <p><b>Summary:</b> Speaker Julian Treasure gives great tips on how to talk well. First, he speaks about bad habits we should avoid, like gossiping, judging, and complaining. Then, he shares an easy formula called "HAIL" (Honesty, Authenticity, Integrity, Love) to help us speak better. He also shows how we can use our voice pitch, speed, loudness, and even silence to make people listen to us carefully.</p>
-                <p><b>My Opinion:</b> This video is perfect for anyone who wants to do presentations. The speaker does not just give rules; he demonstrates them with his own voice. The speaking exercises he shows at the end are very practical.</p>
-                <h3>What I Learnt</h3>
-                <p>I realized that public speaking is a skill that we can practice. I have started doing small voice exercises and I am trying to talk more clearly during class work.</p>
-                <h3>Vocabulary</h3>
-                <div class="vocab-box">
-                    <p>• <b>Timbre:</b> The quality or sound of a person's voice that makes it different from others.</p>
-                    <p>• <b>Prosody:</b> The rhythm and melody we use when we speak words out loud.</p>
-                </div>
-            `
-        },
-        {
-            bgImg: "https://img.youtube.com/vi/GOqEl4ADyVk/maxresdefault.jpg",
-            videoUrl: "https://www.youtube.com/embed/GOqEl4ADyVk",
-            videoLabel: "Streaming: Jay Shetty Podcast",
-            html: `
-                <h2>📄 Page 04: Jay Shetty Podcast — Tom Holland</h2>
-                <div class="academic-tags">
-                    <span class="academic-tag">🌱 Mental Health</span>
-                    <span class="academic-tag">👥 Life Story</span>
-                    <span class="academic-tag">📱 Social Media</span>
-                </div>
-                <div class="info-badge">
-                    <strong>Source:</strong> Jay Shetty On Purpose<br>
-                    <strong>Title:</strong> "Tom Holland OPENS UP About His Sobriety & Social Media Anxiety"
-                </div>
-                <div class="image-frame">
-                    <img src="https://img.youtube.com/vi/GOqEl4ADyVk/maxresdefault.jpg" class="content-img" alt="Tom Holland">
-                </div>
-                <h3>Summary and My Opinion</h3>
-                <p><b>Summary:</b> In this interview, popular actor Tom Holland talks about his real life away from movies. He shares his story about stopping alcohol use and protecting his mental health. He says that alcohol became a way to hide his social fear. He also explains how social media comments made him feel stressed and anxious, and why deleting those apps helped him get his peace of mind back.</p>
-                <p><b>My Opinion:</b> I think this is a very honest and touching conversation. Jay Shetty is a very friendly host, so Tom Holland speaks freely without any fear. It is good to see a famous superstar talking openly about real-life mental struggles.</p>
-                <h3>What I Learnt</h3>
-                <p>I learnt that fame and money do not mean someone is always happy inside. This interview taught me that it is important to take breaks from social media apps when we feel stressed.</p>
-                <h3>Vocabulary</h3>
-                <div class="vocab-box">
-                    <p>• <b>Sobriety:</b> The state of being clean and not using alcohol or harmful things.</p>
-                    <p>• <b>Sensationalism:</b> Making a story sound more shocking or exciting than it really is to get attention.</p>
-                </div>
-            `
-        },
-        {
-            bgImg: "https://img.youtube.com/vi/OFAd5psBS_w/maxresdefault.jpg",
-            videoUrl: "https://www.youtube.com/embed/OFAd5psBS_w",
-            videoLabel: "Streaming: NYT Profiles",
-            html: `
-                <h2>📄 Page 05: The New York Times — Mind of a Thief</h2>
-                <div class="academic-tags">
-                    <span class="academic-tag">🔍 Behavior</span>
-                    <span class="academic-tag">⚖️ Law</span>
-                    <span class="academic-tag">📰 News Profile</span>
-                </div>
-                <div class="info-badge">
-                    <strong>Source:</strong> The New York Times<br>
-                    <strong>Title:</strong> "Inside the Mind of a Master Thief"
-                </div>
-                <div class="image-frame">
-                    <img src="https://img.youtube.com/vi/OFAd5psBS_w/maxresdefault.jpg" class="content-img" alt="NYT Interview">
-                </div>
-                <h3>Summary and My Opinion</h3>
-                <p><b>Summary:</b> This video interview from The New York Times looks into the mind of a real art thief. Instead of praising the crime, it shows how the thief planned things and what he thought. The man explains that breaking through security became like a game or an addiction to him. But at the end of the video, he talks about his big regrets, his loneliness, and how he is trying to change his life now.</p>
-                <p><b>Opinion:</b> This report is very good because it does not make the crime look cool. It shows the real psychological problems and bad results that come from making wrong choices in life.</p>
-                <h3>What I Learnt</h3>
-                <p>I realized how easily people can make excuses for their bad behavior when they are excited. It reminded me that doing the right thing is always important for a peaceful life.</p>
-                <h3>Vocabulary</h3>
-                <div class="vocab-box">
-                    <p>• <b>Rationalize:</b> Trying to find a logical reason for doing something wrong to make it look right.</p>
-                    <p>• <b>Rehabilitation:</b> The process of learning and changing your behavior to live a good life again.</p>
-                </div>
-            `
-        },
-        {
-            bgImg: "https://img.youtube.com/vi/F0zo7zwdIFM/maxresdefault.jpg",
-            videoUrl: "https://www.youtube.com/embed/F0zo7zwdIFM",
-            videoLabel: "Streaming: National Geographic Series",
-            html: `
-                <h2>📄 Page 06: National Geographic — Secrets of the Maya</h2>
-                <div class="academic-tags">
-                    <span class="academic-tag">🏛️ History</span>
-                    <span class="academic-tag">📡 Technology</span>
-                    <span class="academic-tag">🗺️ Discovery</span>
-                </div>
-                <div class="info-badge">
-                    <strong>Source:</strong> National Geographic History<br>
-                    <strong>Title:</strong> "Secrets of the Maya: Uncovering Ancient Civilizations"
-                </div>
-                <div class="image-frame">
-                    <img src="https://img.youtube.com/vi/F0zo7zwdIFM/maxresdefault.jpg" class="content-img" alt="Maya Secrets">
-                </div>
-                <h3>Summary and My Opinion</h3>
-                <p><b>Summary:</b> This video shows how scientists are finding hidden cities of the old Maya people. They use a special technology named LiDAR. This laser tech helps them see through thick jungle trees from the sky. They found old buildings, water systems, and highways that nobody knew about before. This proves that the Maya civilization was much larger and smarter than we previously thought.</p>
-                <p><b>Opinion:</b> I really enjoyed this video because it mixes history with cool technology. The 3D animations show the hidden cities clearly, making it easy and fun for anyone to watch.</p>
-                <h3>What I Learnt</h3>
-                <p>I learnt that people in ancient times were great engineers long before modern machines were made. It shows how technology helps us understand our history better.</p>
-                <h3>Vocabulary</h3>
-                <div class="vocab-box">
-                    <p>• <b>Infrastructure:</b> The basic physical systems, like roads and water pipes, that a city needs.</p>
-                    <p>• <b>Remote sensing:</b> Collecting information about an area from a distance using satellites or planes.</p>
-                </div>
-            `
-        },
-        {
-            bgImg: "https://img.youtube.com/vi/W4tqbEmplug/maxresdefault.jpg",
-            videoUrl: "https://www.youtube.com/embed/W4tqbEmplug",
-            videoLabel: "Streaming: DOAC Simon Sinek",
-            html: `
-                <h2>📄 Page 07: The Diary of a CEO — Simon Sinek</h2>
-                <div class="academic-tags">
-                    <span class="academic-tag">💼 Leadership</span>
-                    <span class="academic-tag">🎯 Purpose</span>
-                    <span class="academic-tag">🤝 Work Culture</span>
-                </div>
-                <div class="info-badge">
-                    <strong>Source:</strong> The Diary of a CEO<br>
-                    <strong>Title:</strong> "Simon Sinek: How to Find Your True Purpose in Life"
-                </div>
-                <div class="image-frame">
-                    <img src="https://img.youtube.com/vi/W4tqbEmplug/maxresdefault.jpg" class="content-img" alt="Simon Sinek">
-                </div>
-                <h3>Summary and My Opinion</h3>
-                <p><b>Summary:</b> Leadership expert Simon Sinek talks about work, motivation, and finding true joy in life. He explains that to be happy, we must understand *Why* we do our work, rather than just focusing on money or *What* we get. He says good company bosses should create a friendly space where workers feel safe, happy, and trusted, which helps everyone work together nicely.</p>
-                <p><b>Opinion:</b> Simon Sinek is an amazing speaker. He uses very simple stories to explain big ideas about business and life. This talk is very helpful for students who are planning their future careers.</p>
-                <h3>What I Learnt</h3>
-                <p>I learnt that real success comes from doing work that has a meaning to us. Money is good, but finding our passion is what keeps us happy for a long time.</p>
-                <h3>Vocabulary</h3>
-                <div class="vocab-box">
-                    <p>• <b>Fulfillment:</b> A feeling of deep happiness and satisfaction when you achieve your goals.</p>
-                    <p>• <b>Metaphor:</b> Using a simple story or example to explain a totally different idea.</p>
-                </div>
-            `
-        },
-        {
-            bgImg: "https://img.youtube.com/vi/HAnw168huqA/maxresdefault.jpg", 
-            videoUrl: "https://www.youtube.com/embed/HAnw168huqA", 
-            videoLabel: "Streaming: Stanford GSB — Matt Abrahams",
-            html: `
-                <h2>📄 Page 08: Stanford GSB — Think Fast, Talk Smart</h2>
-                <div class="academic-tags">
-                    <span class="academic-tag">⚡ Quick Speaking</span>
-                    <span class="academic-tag">📉 Less Stress</span>
-                    <span class="academic-tag">🏫 Presentation Tips</span>
-                </div>
-                <div class="info-badge">
-                    <strong>Source:</strong> Stanford Graduate School of Business<br>
-                    <strong>Title:</strong> "Think Fast, Talk Smart: Communication Techniques"
-                </div>
-                <div class="image-frame">
-                    <img src="https://img.youtube.com/vi/HAnw168huqA/maxresdefault.jpg" class="content-img" alt="Matt Abrahams">
-                </div>
-                <h3>Summary and My Opinion</h3>
-                <p><b>Summary:</b> Stanford teacher Matt Abrahams gives easy tips on how to talk well when we do not have a plan. He says many people feel scared to talk in public because they want to be perfect. He tells us to stop trying to be perfect and just treat it like a normal talk. He shares a simple formula: "What? So What? Now What?" to help us answer unexpected questions easily.</p>
-                <p><b>Opinion:</b> This video is super useful for university students. The tips are very simple and we can use them immediately during exams, class presentations, or job interviews.</p>
-                <h3>What I Learnt</h3>
-                <p>I learnt that speaking well without a plan is a skill that anyone can build with practice. Using his simple 3-step formula helps me think faster when someone asks me a sudden question.</p>
-                <h3>Vocabulary</h3>
-                <div class="vocab-box">
-                    <p>• <b>Spontaneous speaking:</b> Talking clearly and nicely without preparing or writing down notes before.</p>
-                    <p>• <b>Cognitive reframing:</b> Changing the way you think about a scary thing to make it feel easy.</p>
-                </div>
-            `
-        },
-        {
-            bgImg: "https://img.youtube.com/vi/cdZZpaB2kDM/maxresdefault.jpg",
-            videoUrl: "https://www.youtube.com/embed/cdZZpaB2kDM", 
-            videoLabel: "Streaming: TED Talks — Elon Musk",
-            html: `
-                <h2>📄 Page 09: TED Talks — Elon Musk</h2>
-                <div class="academic-tags">
-                    <span class="academic-tag">🚀 Future Visions</span>
-                    <span class="academic-tag">🌱 Safe Planet</span>
-                    <span class="academic-tag">🔭 Space Tech</span>
-                </div>
-                <div class="info-badge">
-                    <strong>Source:</strong> TED Conference<br>
-                    <strong>Title:</strong> "Elon Musk: A future worth choosing"
-                </div>
-                <div class="image-frame">
-                    <img src="https://img.youtube.com/vi/cdZZpaB2kDM/maxresdefault.jpg" class="content-img" alt="Elon Musk">
-                </div>
-                <h3>Summary and My Opinion</h3>
-                <p><b>Summary:</b> In this video, billionaire Elon Musk talks about his massive plans for the future. He shares his thoughts on clean solar energy, electric cars, tunnels under cities to stop traffic, and flying to planet Mars. He says that we must solve Earth's problems, but we also need big, exciting dreams about the future to stay happy and hopeful.</p>
-                <p><b>Opinion:</b> Elon Musk does not speak very fast or perfectly; he takes long pauses. But his ideas are so big and interesting that everyone listens to him carefully. It shows that having good ideas is sometimes better than just talking beautifully.</p>
-                <h3>What I Learnt</h3>
-                <p>I learnt that a good presentation needs great ideas first. It changed how I think about future technology and how it can help save our world.</p>
-                <h3>Vocabulary</h3>
-                <div class="vocab-box">
-                    <p>• <b>Sustainability:</b> Using resources carefully so they do not run out in the future.</p>
-                    <p>• <b>Colonization:</b> Building new homes and cities for humans in a new place like another planet.</p>
-                </div>
-            `
-        },
-        {
-            bgImg: "https://img.youtube.com/vi/C_78DM8fG6E/maxresdefault.jpg",
-            videoUrl: "https://www.youtube.com/embed/C_78DM8fG6E",
-            videoLabel: "Streaming: TED Talks — OpenAI Potential",
-            html: `
-                <h2>📄 Page 10: TED Talks — OpenAI Presentation</h2>
-                <div class="academic-tags">
-                    <span class="academic-tag">🤖 AI Tech</span>
-                    <span class="academic-tag">🖥️ Easy Tools</span>
-                    <span class="academic-tag">🔮 Innovation</span>
-                </div>
-                <div class="info-badge">
-                    <strong>Source:</strong> TED Conference Archive / Tech Series<br>
-                    <strong>Title:</strong> "The Inside Story of ChatGPT's Astonishing Potential"
-                </div>
-                <div class="image-frame">
-                    <img src="https://img.youtube.com/vi/C_78DM8fG6E/maxresdefault.jpg" class="content-img" alt="Greg Brockman">
-                </div>
-                <h3>Summary and My Opinion</h3>
-                <p><b>Summary:</b> OpenAI co-founder Greg Brockman shows how ChatGPT works and what it can do next. He shows live examples on screen of how AI can understand human talk and do creative tasks like drawing or coding. He says that the main goal is to make AI a safe, helpful friend that can make human work easier and faster every day.</p>
-                <p><b>Opinion:</b> This is a great video because it uses live computer examples. The speaker explains complicated software ideas in a very simple way, so even people who do not know computer coding can understand it easily.</p>
-                <h3>What I Learnt</h3>
-                <p>I understood that new technology needs to be explained simply so everyone can use it. This video inspired me to learn more about how AI tools can help me with my study tasks.</p>
-                <h3>Vocabulary</h3>
-                <div class="vocab-box">
-                    <p>• <b>Generative AI:</b> Smart computer systems that can create new text, images, or code by learning from old data.</p>
-                    <p>• <b>User interface:</b> The screen design and buttons that let a human talk to and control a computer tool easily.</p>
-                </div>
-            `
-        },
-        {
-            bgImg: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1200", 
-            videoUrl: "", 
-            videoLabel: "",
-            html: `
-                <h2>✨ Concluding Session</h2>
-                <div class="academic-tags">
-                    <span class="academic-tag">🎓 Completed</span>
-                    <span class="academic-tag">🤝 Thank You</span>
-                </div>
-                
-                <div class="thankyou-container">
-                    <div class="image-frame">
-                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800" class="content-img" alt="Thank You">
-                    </div>
-                    <h1 class="thankyou-title">Thank You For Your Attention!</h1>
-                    <p class="thankyou-sub">Continuous Assessment 01 — E-Portfolio Completed Successfully</p>
-                    
-                    <div class="info-badge" style="margin-top: 25px; text-align: left;">
-                        <strong>Note:</strong> This portfolio shows my study of 10 great interviews. I learned about speech, mindset, and new technology. I want to say a big thank you to my university teachers for helping me.
-                    </div>
-                </div>
-            `
-        }
-    ];
+            </div>
+        </div>
 
-    let currentPageIndex = 0;
+        <!-- Page 02 -->
+        <div class="portfolio-card">
+            <div class="card-header">
+                <div class="page-number">📄 Page 02: TED Talks</div>
+                <div class="date-badge">Accessed: May 26, 2026</div>
+            </div>
+            <h2 class="content-title">"How Language Shapes the Way We Think"</h2>
+            <div class="meta-info">
+                <strong>Reference:</strong> TED Talks Official Portal (Published: April 2018)
+            </div>
+            
+            <div class="section-title">Summary:</div>
+            <div class="section-content">This presentation features cognitive scientist Lera Boroditsky exploring the direct relationship between native languages and human psychology. She introduces distinct cultural communities (such as the Kuuk Thaayorre) who use absolute cardinal directions (North, South, East, West) instead of relative terms (Left, Right) for spatial awareness. The conversation demonstrates how native grammar systems dictate how societies perceive colors, map chronological time, and assign moral responsibility.</div>
+            
+            <div class="section-title">Your Opinion:</div>
+            <div class="section-content">It's delivered in an excellent manner with the help of diagrams and interesting examples.</div>
+            
+            <div class="section-title">Reflective Growth:</div>
+            <div class="section-content">I understood that when you learn a new language, it is not just about learning words but about seeing the whole world in a different way.</div>
+            
+            <div class="vocabulary-box">
+                <div class="vocabulary-title">Vocabulary Expansion</div>
+                <ul class="vocabulary-list">
+                    <li><strong>Perception:</strong> A personal mental viewpoint or way of understanding something.</li>
+                    <li><strong>Linguistic determinism:</strong> The structural theory of how native languages limit or shape human thinking.</li>
+                </ul>
+            </div>
+        </div>
 
-    function renderPage(index) {
-        const pageCanvas = document.getElementById("pageDisplay");
-        const videoHub = document.getElementById("videoMediaHub");
-        const videoIframe = document.getElementById("persistentIframe");
-        const videoTitle = document.getElementById("videoTitleTag");
-        const deckIndicator = document.getElementById("deckIndicator");
-        const progressBar = document.getElementById("progressBar");
-        const progressLabel = document.getElementById("progressLabel");
+        <!-- Page 03 -->
+        <div class="portfolio-card">
+            <div class="card-header">
+                <div class="page-number">📄 Page 03: TED Talks</div>
+                <div class="date-badge">Accessed: May 28, 2026</div>
+            </div>
+            <h2 class="content-title">"How to Speak So That People Want to Listen"</h2>
+            <div class="meta-info">
+                <strong>Reference:</strong> TED Conference Archive (Published: June 2014)
+            </div>
+            
+            <div class="section-title">Summary:</div>
+            <div class="section-content">Communication strategist Julian Treasure shares actionable public speaking frameworks. He highlights seven vocal pitfalls (including gossip, dogmatism, and complaining) that alienate listeners. He introduces the behavioral tool 'HAIL'—which stands for Honesty, Authenticity, Integrity, and Love—while demonstrating how to manipulate physical properties like vocal register, timbre, prosody, and strategic silence.</div>
+            
+            <div class="section-title">Your Opinion:</div>
+            <div class="section-content">Must-watch for everyone who delivers presentations. Live demonstration of working with vocal tools is very practical.</div>
+            
+            <div class="section-title">Reflective Growth:</div>
+            <div class="section-content">I've understood that public speaking is an art that can be practiced and improved.</div>
+            
+            <div class="vocabulary-box">
+                <div class="vocabulary-title">Vocabulary Expansion</div>
+                <ul class="vocabulary-list">
+                    <li><strong>Timbre:</strong> The specific aesthetic quality or richness of a person's voice.</li>
+                    <li><strong>Prosody:</strong> The natural rhythmic melody and intonation used in spoken language.</li>
+                </ul>
+            </div>
+        </div>
 
-        pageCanvas.classList.remove("page-turn-active");
-        void pageCanvas.offsetWidth; 
-        pageCanvas.classList.add("page-turn-active");
+        <!-- Page 04 -->
+        <div class="portfolio-card">
+            <div class="card-header">
+                <div class="page-number">📄 Page 04: Jay Shetty Podcast</div>
+                <div class="date-badge">Accessed: May 30, 2026</div>
+            </div>
+            <h2 class="content-title">"Tom Holland OPENS UP About His Sobriety & Social Media Anxiety"</h2>
+            <div class="meta-info">
+                <strong>Reference:</strong> Jay Shetty 'On Purpose' Podcast Channel (Published: July 2023)
+            </div>
+            
+            <div class="section-title">Summary:</div>
+            <div class="section-content">Host Jay Shetty sits down with globally recognized actor Tom Holland for a personal mental health evaluation. Holland discusses his long-term journey toward complete sobriety, coping with intense social anxiety under the Hollywood spotlight, and his ultimate decision to delete toxic social media applications to safeguard his psychological well-being.</div>
+            
+            <div class="section-title">Your Opinion:</div>
+            <div class="section-content">Very raw and emotional interview. Reminds that even celebrities have to struggle with mental issues.</div>
+            
+            <div class="section-title">Reflective Growth:</div>
+            <div class="section-content">I've realized that no matter how rich and famous you are, you still might not be happy and that leaving social media when overwhelmed is healthy.</div>
+            
+            <div class="vocabulary-box">
+                <div class="vocabulary-title">Vocabulary Expansion</div>
+                <ul class="vocabulary-list">
+                    <li><strong>Sobriety:</strong> The physical state of being continuously sober and free from intoxicating substances.</li>
+                    <li><strong>Sensationalism:</strong> The systematic use of exaggeration or shock value in modern media to generate superficial excitement.</li>
+                </ul>
+            </div>
+        </div>
 
-        pageCanvas.innerHTML = portfolioContent[index].html;
+        <!-- Page 05 -->
+        <div class="portfolio-card">
+            <div class="card-header">
+                <div class="page-number">📄 Page 05: The New York Times</div>
+                <div class="date-badge">Accessed: June 01, 2026</div>
+            </div>
+            <h2 class="content-title">"Inside the Mind of a Master Thief"</h2>
+            <div class="meta-info">
+                <strong>Reference:</strong> The New York Times Video Archive (Published: February 2022)
+            </div>
+            
+            <div class="section-title">Summary:</div>
+            <div class="section-content">NYT investigative journalists conduct a psychological profile interview with a high-profile, reformed art thief. The discussion explores criminal intent, showing how bypassing security systems transformed from a technical puzzle into a severe psychological addiction. The narrative concludes with a look at the lingering consequences of his choices: profound guilt, isolation, and legal accountability.</div>
+            
+            <div class="section-title">Your Opinion:</div>
+            <div class="section-content">It's not about glorification of crime and focuses more on the consequences of poor life choices and mental downfall.</div>
+            
+            <div class="section-title">Reflective Growth:</div>
+            <div class="section-content">I've seen how people try to rationalize their bad deeds, and understood that integrity is crucial to inner peace.</div>
+            
+            <div class="vocabulary-box">
+                <div class="vocabulary-title">Vocabulary Expansion</div>
+                <ul class="vocabulary-list">
+                    <li><strong>Rationalize:</strong> Attempting to justify problematic actions through seemingly logical excuses.</li>
+                    <li><strong>Rehabilitation:</strong> The comprehensive process of restoring an individual to a healthy, normal life within society.</li>
+                </ul>
+            </div>
+        </div>
 
-        const layer1 = document.getElementById("bgLayer1");
-        const layer2 = document.getElementById("bgLayer2");
-        const targetImg = portfolioContent[index].bgImg;
+        <!-- Page 06 -->
+        <div class="portfolio-card">
+            <div class="card-header">
+                <div class="page-number">📄 Page 06: National Geographic</div>
+                <div class="date-badge">Accessed: June 03, 2026</div>
+            </div>
+            <h2 class="content-title">"Lost Cities of the Maya: Revealed"</h2>
+            <div class="meta-info">
+                <strong>Reference:</strong> National Geographic Channel (Published: 2019)
+            </div>
+            
+            <div class="section-title">Summary:</div>
+            <div class="section-content">Scientific explorer Dr. Albert Lin hosts an investigative archaeological documentary deep in the Central American jungles. The core concept focuses on applying aerospace LiDAR mapping to strip away heavy canopy growth digitally. This approach reveals thousands of previously undocumented Mayan highways, fortifications, and agricultural complexes, proving that pre-Columbian civilizations were vastly more urbanized than history books suggested.</div>
+            
+            <div class="section-title">Your Opinion:</div>
+            <div class="section-content">It is an amazing movie which successfully combines technology and history. Passionate delivery of information keeps viewer interested all the time.</div>
+            
+            <div class="section-title">Reflective Growth:</div>
+            <div class="section-content">I've learned that ancient civilizations had amazing engineering abilities and how technology such as LiDAR can dramatically increase productivity of archaeologists.</div>
+            
+            <div class="vocabulary-box">
+                <div class="vocabulary-title">Vocabulary Expansion</div>
+                <ul class="vocabulary-list">
+                    <li><strong>LiDAR:</strong> Light Detection and Ranging technology used to map terrain using airborne lasers.</li>
+                    <li><strong>Archaeologist:</strong> A scientific specialist who reconstructs human history by analyzing material remains and artifacts.</li>
+                </ul>
+            </div>
+        </div>
 
-        if (layer1.classList.contains("bg-active")) {
-            layer2.style.backgroundImage = `url('${targetImg}')`;
-            layer1.classList.remove("bg-active");
-            layer2.classList.add("bg-active");
-        } else {
-            layer1.style.backgroundImage = `url('${targetImg}')`;
-            layer2.classList.remove("bg-active");
-            layer1.classList.add("bg-active");
-        }
+        <!-- Page 07 -->
+        <div class="portfolio-card">
+            <div class="card-header">
+                <div class="page-number">📄 Page 07: The Diary of a CEO</div>
+                <div class="date-badge">Accessed: June 05, 2026</div>
+            </div>
+            <h2 class="content-title">"Simon Sinek: The Advice You Need to Hear Right Now!"</h2>
+            <div class="meta-info">
+                <strong>Reference:</strong> The Diary of a CEO YouTube Channel (Published: 2023)
+            </div>
+            
+            <div class="section-title">Summary:</div>
+            <div class="section-content">Host Steven Bartlett interviews corporate culture author Simon Sinek regarding the systemic challenges facing young adults today. Sinek details the mechanics of professional patience, the critical need for workplace empathy, and how to define an operational purpose ("The Why"). He also criticizes dopamine loops driven by smartphones, which compound feelings of isolation.</div>
+            
+            <div class="section-title">Your Opinion:</div>
+            <div class="section-content">Excellent guide to life and career. His insights about smartphone addiction and increased isolation of youth are frighteningly true.</div>
+            
+            <div class="section-title">Reflective Growth:</div>
+            <div class="section-content">I've learned that true corporate success and personal satisfaction cannot be achieved instantly; meaningful relationship based on empathy lasts.</div>
+            
+            <div class="vocabulary-box">
+                <div class="vocabulary-title">Vocabulary Expansion</div>
+                <ul class="vocabulary-list">
+                    <li><strong>Fulfillment:</strong> The deep emotional satisfaction derived from achieving a purposeful life goal.</li>
+                    <li><strong>Empathy:</strong> The active cognitive capacity to understand and share the emotions of another individual.</li>
+                </ul>
+            </div>
+        </div>
 
-        if (portfolioContent[index].videoUrl) {
-            videoHub.style.display = "block";
-            videoTitle.innerText = portfolioContent[index].videoLabel;
-            if (videoIframe.src !== portfolioContent[index].videoUrl) {
-                videoIframe.src = portfolioContent[index].videoUrl;
-            }
-        } else {
-            videoHub.style.display = "none";
-            videoIframe.src = "";
-        }
+        <!-- Page 08 -->
+        <div class="portfolio-card">
+            <div class="card-header">
+                <div class="page-number">📄 Page 08: Stanford GSB</div>
+                <div class="date-badge">Accessed: June 07, 2026</div>
+            </div>
+            <h2 class="content-title">"Think Fast, Talk Smart: Communication Techniques"</h2>
+            <div class="meta-info">
+                <strong>Reference:</strong> Stanford Graduate School of Business Lecture Series (Published: 2014)
+            </div>
+            
+            <div class="section-title">Summary:</div>
+            <div class="section-content">Communications expert and lecturer Matt Abrahams presents a masterclass on managing unexpected, impromptu speaking environments. He highlights structural communication models—specifically the "Problem-Solution-Benefit" blueprint—designed to mitigate anxiety, clear up mental clutter, and help professionals answer unexpected interview questions fluidly.</div>
+            
+            <div class="section-title">Your Opinion:</div>
+            <div class="section-content">Ideal for management and tech students. Gives useful templates instead of just advice.</div>
+            
+            <div class="section-title">Reflective Growth:</div>
+            <div class="section-content">I've realized that managing fear of impromptu speaking is not about perfection; it is about giving structure to your listener.</div>
+            
+            <div class="vocabulary-box">
+                <div class="vocabulary-title">Vocabulary Expansion</div>
+                <ul class="vocabulary-list">
+                    <li><strong>Spontaneous:</strong> Unprepared, sudden, or occurring without prior formal arrangement.</li>
+                    <li><strong>Framework:</strong> A reliable, structured conceptual guide used to organize ideas logically.</li>
+                </ul>
+            </div>
+        </div>
 
-        if (index === 0) {
-            deckIndicator.innerText = "INDEX MANIFEST";
-            progressLabel.innerText = "Module Index";
-            progressBar.style.width = "0%";
-        } else if (index === portfolioContent.length - 1) {
-            deckIndicator.innerText = "CONCLUDING CHAPTER";
-            progressLabel.innerText = "Portfolio Complete";
-            progressBar.style.width = "100%";
-        } else {
-            deckIndicator.innerText = `NODE PROGRESS: ${index} / 10`;
-            progressLabel.innerText = `Analysis Progress`;
-            let fillPercentage = (index / (portfolioContent.length - 2)) * 100;
-            progressBar.style.width = `${fillPercentage}%`;
-        }
-        
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+        <!-- Page 09 -->
+        <div class="portfolio-card">
+            <div class="card-header">
+                <div class="page-number">📄 Page 09: Lex Fridman Podcast</div>
+                <div class="date-badge">Accessed: June 09, 2026</div>
+            </div>
+            <h2 class="content-title">"Mark Zuckerberg: First Interview in the Metaverse"</h2>
+            <div class="meta-info">
+                <strong>Reference:</strong> Lex Fridman Podcast Channel (Published: June 2023)
+            </div>
+            
+            <div class="section-title">Summary:</div>
+            <div class="section-content">Host Lex Fridman interviews Meta CEO Mark Zuckerberg inside an immersive virtual reality space using photorealistic spatial avatars. The core dialogue addresses the future intersection of human identity, advanced Artificial Intelligence, and spatial computing. They debate how virtual reality environments, digital companions, and decentralized metaverses will permanently change remote human collaboration.</div>
+            
+            <div class="section-title">Your Opinion:</div>
+            <div class="section-content">An enlightening conversation for ICT students. Gives balance between possibilities of technology and its ethical issues.</div>
+            
+            <div class="section-title">Reflective Growth:</div>
+            <div class="section-content">As a student of Information Technology, I've seen how rapidly AI evolves and understood the importance of creating ethically correct software for our generation.</div>
+            
+            <div class="vocabulary-box">
+                <div class="vocabulary-title">Vocabulary Expansion</div>
+                <ul class="vocabulary-list">
+                    <li><strong>Avatar:</strong> A high-fidelity graphical digital representation of a person within virtual spaces.</li>
+                    <li><strong>Immersive:</strong> Providing a deeply realistic, absorbing digital environment that mimics physical reality.</li>
+                </ul>
+            </div>
+        </div>
 
-    function turnPageForward() {
-        if (currentPageIndex < portfolioContent.length - 1) {
-            currentPageIndex++;
-        } else {
-            currentPageIndex = 0;
-        }
-        renderPage(currentPageIndex);
-    }
+        <!-- Page 10 -->
+        <div class="portfolio-card">
+            <div class="card-header">
+                <div class="page-number">📄 Page 10: BBC News</div>
+                <div class="date-badge">Accessed: June 11, 2026</div>
+            </div>
+            <h2 class="content-title">"Malala Yousafzai on Her Ongoing Fight for Girls' Education"</h2>
+            <div class="meta-info">
+                <strong>Reference:</strong> BBC News Global Archive (Published: 2021)
+            </div>
+            
+            <div class="section-title">Summary:</div>
+            <div class="section-content">A formal BBC broadcast profile featuring Nobel Peace Prize laureate Malala Yousafzai. The discussion highlights her international campaign for equal female access to schooling, her recovery from targeted extremist violence, and the role baseline literacy plays in breaking generational poverty cycles worldwide.</div>
+            
+            <div class="section-title">Your Opinion:</div>
+            <div class="section-content">It is deeply moving and inspirational. Gives an insight of the biggest global problem which many people in safe countries forget.</div>
+            
+            <div class="section-title">Reflective Growth:</div>
+            <div class="section-content">Made me appreciate education opportunities that I have and gave motivation to use my ICT knowledge to help society.</div>
+            
+            <div class="vocabulary-box">
+                <div class="vocabulary-title">Vocabulary Expansion</div>
+                <ul class="vocabulary-list">
+                    <li><strong>Activism:</strong> Driven social or political campaigning intended to create systemic changes.</li>
+                    <li><strong>Resilience:</strong> The profound psychological capacity to recover quickly from severe trauma or operational hardships.</li>
+                </ul>
+            </div>
+        </div>
 
-    function turnPageBack() {
-        if (currentPageIndex > 0) {
-            currentPageIndex--;
-        } else {
-            currentPageIndex = portfolioContent.length - 1;
-        }
-        renderPage(currentPageIndex);
-    }
+        <!-- Dynamic Elegant Thank You Section -->
+        <div class="thank-you-section">
+            <div class="thank-you-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </div>
+            <h2 class="thank-you-text">Thank you for your attention!</h2>
+            <p class="thank-you-subtext">Thank you for reviewing my Communicative English E-Portfolio. Your valuable time and constructive guidance are highly appreciated.</p>
+        </div>
 
-    function goHome() {
-        currentPageIndex = 0;
-        renderPage(currentPageIndex);
-    }
+    </div>
 
-    function jumpToPage(targetPageNum) {
-        if(targetPageNum >= 0 && targetPageNum < portfolioContent.length) {
-            currentPageIndex = targetPageNum;
-            renderPage(currentPageIndex);
-        }
-    }
+    <footer>
+        <p>© 2026 Continuous Assessment E-Portfolio | All Rights Reserved.</p>
+    </footer>
 
-    window.addEventListener("DOMContentLoaded", () => {
-        renderPage(0);
-    });
-</script>
 </body>
 </html>

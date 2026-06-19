@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -83,7 +83,7 @@
             letter-spacing: 4px;
         }
 
-        /* 🎓 Professional Executive Badge - Ultra Focused on the New Portrait */
+        /* 🎓 Professional Executive Badge */
         .student-badge-card {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             border: 1px solid rgba(56, 189, 248, 0.25);
@@ -98,7 +98,6 @@
             overflow: hidden;
         }
 
-        /* Premium circular wrapper for the new executive avatar */
         .avatar-isolation-container {
             width: 95px;
             height: 95px;
@@ -111,21 +110,19 @@
             overflow: hidden;
         }
 
-        /* Dynamic background blur using the new image */
         .avatar-blur-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('WhatsApp Image 2026-06-19 at 02.32.31.jpeg');
+            background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150');
             background-size: 200%;
-            background-position: center 30%;
+            background-position: center;
             filter: blur(8px) brightness(0.4);
             z-index: 1;
         }
 
-        /* Foreground framing for the new crisp corporate close-up */
         .avatar-foreground-profile {
             position: absolute;
             top: 0;
@@ -134,8 +131,7 @@
             height: 100%;
             z-index: 2;
             object-fit: cover;
-            object-position: center 20%; 
-            transform: scale(1.1);
+            object-position: center; 
         }
 
         .student-details-wrapper {
@@ -180,7 +176,7 @@
             font-size: 13.5px !important;
         }
 
-        /* 📊 Interactive Progress Tracker Bar */
+        /* 📊 Tracker Bar */
         .progress-container {
             background: rgba(15, 23, 42, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -215,7 +211,7 @@
             transition: width 0.5s ease-out;
         }
 
-        /* Clean White Page Content Canvas Layer */
+        /* Content Canvas Layer */
         .page-canvas {
             background-color: #ffffff;
             color: #1e293b;
@@ -244,7 +240,6 @@
             box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
         }
 
-        /* 🎯 Academic Evaluation Tags Block */
         .academic-tags {
             display: flex;
             gap: 8px;
@@ -263,7 +258,6 @@
             border: 1px solid #e2e8f0;
         }
 
-        /* 🖼️ Real Image Frame Layout */
         .image-frame {
             background-color: #0f172a; 
             border-radius: 16px;
@@ -283,7 +277,7 @@
             width: 100%;
             height: auto;
             max-height: 420px;
-            object-fit: contain; 
+            object-fit: cover; 
             display: block;
         }
 
@@ -324,7 +318,7 @@
             margin-top: 12px;
         }
 
-        /* 📺 Horizon Video Player Studio */
+        /* Video Player Node */
         .youtube-bottom-stream {
             background: #020617;
             border-top: 2px solid rgba(255, 255, 255, 0.05);
@@ -376,7 +370,6 @@
             border: 0;
         }
 
-        /* Clean List Layout */
         .toc-list {
             list-style: none;
             padding: 0;
@@ -427,7 +420,6 @@
             color: white;
         }
 
-        /* Controller Deck Footer Node */
         .hub-footer {
             background: #020617;
             padding: 22px 25px;
@@ -483,7 +475,7 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* 🎉 Custom Thank You Page Styles */
+        /* 🎉 Thank You Deck Styling */
         .thankyou-container {
             text-align: center;
             padding: 20px 10px;
@@ -516,7 +508,7 @@
         <p>Continuous Assessment 01 — E-Portfolio</p>
     </div>
 
-    <!-- 📊 Smart Progress Tracker -->
+    <!-- 📊 Progress Tracker -->
     <div class="progress-container">
         <span class="progress-label" id="progressLabel">Module Index</span>
         <div class="progress-bar-bg">
@@ -524,12 +516,12 @@
         </div>
     </div>
 
-    <!-- Central Paper Text Display Canvas Area -->
+    <!-- Central Paper Canvas Area -->
     <div class="page-canvas" id="pageDisplay">
         <!-- Injected via JavaScript -->
     </div>
 
-    <!-- 📺 SMART YOUTUBE MEDIA PLAYER -->
+    <!-- 📺 YOUTUBE MEDIA PLAYER -->
     <div class="youtube-bottom-stream" id="videoMediaHub">
         <div class="video-tag">
             <div class="video-status"><span></span> <span id="videoTitleTag">Interview Stream Player</span></div>
@@ -539,7 +531,7 @@
         </div>
     </div>
 
-    <!-- Controller Deck Footer Node -->
+    <!-- Controller Deck Footer -->
     <div class="hub-footer">
         <button class="nav-btn" onclick="turnPageBack()">◀️ Prev</button>
         <button class="nav-btn home-btn" onclick="goHome()">🏠 Index</button>
@@ -555,11 +547,11 @@
             videoUrl: "", 
             videoLabel: "",
             html: `
-                <!-- 🎓 Isolated Student Profile Dashboard Card -->
+                <!-- 🎓 Student Profile Dashboard Card -->
                 <div class="student-badge-card">
                     <div class="avatar-isolation-container">
                         <div class="avatar-blur-bg"></div>
-                        <img src="WhatsApp Image 2026-06-19 at 02.32.31.jpeg" class="avatar-foreground-profile" alt="S.S. Pramod Maduthisara Profile">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300" class="avatar-foreground-profile" alt="Profile Portfolio Avatar">
                     </div>
                     <div class="student-details-wrapper">
                         <h4>Student Identity Dashboard</h4>
@@ -887,13 +879,13 @@
                 <p>This dialogue completely shifted my perspective on presentation frameworks. I realized that a speaker's impact relies on authenticity and the clarity of the underlying conceptual ideas, rather than just smooth, superficial presentation delivery.</p>
                 <h3>Vocabulary & Language Focus</h3>
                 <div class="vocab-box">
-                    <p>• <b>Sustainability:</b> The capacity to maintain or support a process or resource balance continuously over time.</p>
-                    <p>• <b>Colonization:</b> The action of establishing control, community settlements, or functional systems over foreign or new territories.</p>
+                    <p>• <b>Sustainability:</b> The capacity to maintain or support a resource balance continuously over time.</p>
+                    <p>• <b>Colonization:</b> The action of establishing community settlements over foreign or new territories.</p>
                 </div>
             `
         },
         {
-            bgImg: "C_78DM8fG6E-HD (1).jpg",
+            bgImg: "https://img.youtube.com/vi/C_78DM8fG6E/maxresdefault.jpg",
             videoUrl: "https://www.youtube.com/embed/C_78DM8fG6E",
             videoLabel: "Streaming: TED Talks — OpenAI Potential",
             html: `
@@ -910,7 +902,7 @@
                     <strong>Date Accessed:</strong> June 11, 2026
                 </div>
                 <div class="image-frame">
-                    <img src="C_78DM8fG6E-HD (1).jpg" class="content-img" alt="Greg Brockman OpenAI Interview Image">
+                    <img src="https://img.youtube.com/vi/C_78DM8fG6E/maxresdefault.jpg" class="content-img" alt="Greg Brockman OpenAI Interview Image">
                 </div>
                 <h3>Critical Analysis (Summary & Opinion)</h3>
                 <p><b>Summary:</b> OpenAI co-founder Greg Brockman demonstrates the unreleased features and development strategies behind advanced artificial intelligence models. He highlights how complex neural patterns are designed to interpret real human intent dynamically through conversation.</p>
@@ -919,8 +911,8 @@
                 <p>I understood that technological progress requires strong structural communication to bridge the gap between complex software design and public comprehension. This has inspired me to study technical presentation techniques more deeply.</p>
                 <h3>Vocabulary & Language Focus</h3>
                 <div class="vocab-box">
-                    <p>• <b>Generative AI:</b> High-capacity neural networks built to create coherent text, media, or structures from historical patterns.</p>
-                    <p>• <b>User interface:</b> The visual and interactive framework that acts as a bridge for communication between a human operator and software logic.</p>
+                    <p>• <b>Generative AI:</b> High-capacity neural networks built to create coherent text from historical patterns.</p>
+                    <p>• <b>User interface:</b> The interactive framework that acts as a bridge for communication between a human operator and software logic.</p>
                 </div>
             `
         },

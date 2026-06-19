@@ -15,7 +15,6 @@
             background: #090d16;
             color: #f8fafc;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            /* 🛠️ FIXED: Removed min-height/display:flex that caused locking in the middle */
             overflow-x: hidden;
             width: 100%;
         }
@@ -40,7 +39,6 @@
             opacity: 1;
         }
 
-        /* 🛠️ FIXED: Centering with margin instead of flexbox to allow natural top-to-bottom scrolling */
         .portfolio-hub {
             width: 100%;
             max-width: 850px;
@@ -108,19 +106,6 @@
             overflow: hidden;
         }
 
-        .avatar-blur-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150');
-            background-size: 200%;
-            background-position: center;
-            filter: blur(8px) brightness(0.4);
-            z-index: 1;
-        }
-
         .avatar-foreground-profile {
             position: absolute;
             top: 0;
@@ -129,7 +114,7 @@
             height: 100%;
             z-index: 2;
             object-fit: cover;
-            object-position: center; 
+            object-position: top center; 
         }
 
         .student-details-wrapper {
@@ -539,6 +524,9 @@
 </div>
 
 <script>
+    // 🛠️ 1. LINKED YOUR PROVIDED IMAGE DIRECTLY
+    const MY_PROFILE_IMAGE_URL = "WhatsApp Image 2026-06-20 at 02.54.39.jpeg";
+
     const portfolioContent = [
         {
             bgImg: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200", 
@@ -548,8 +536,7 @@
                 <!-- 🎓 Student Profile Dashboard Card -->
                 <div class="student-badge-card">
                     <div class="avatar-isolation-container">
-                        <div class="avatar-blur-bg"></div>
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300" class="avatar-foreground-profile" alt="Profile Portfolio Avatar">
+                        <img src="${MY_PROFILE_IMAGE_URL}" class="avatar-foreground-profile" alt="S.S. Pramod Maduthisara">
                     </div>
                     <div class="student-details-wrapper">
                         <h4>Student Identity Dashboard</h4>
@@ -915,7 +902,7 @@
             `
         },
         {
-            bgImg: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200",
+            bgImg: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200",
             videoUrl: "",
             videoLabel: "",
             html: `
@@ -927,7 +914,7 @@
                     </div>
                     
                     <div class="image-frame" style="margin-top: 15px;">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800" class="content-img" alt="Graduation Celebration Success Image">
+                        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800" class="content-img" alt="Academic Success">
                     </div>
                     
                     <p class="thankyou-text" style="font-size: 15.5px; line-height: 1.7; color: #475569;">
@@ -1005,7 +992,6 @@
             progressBar.style.width = `${fillPercentage}%`;
         }
         
-        // 🛠️ FIXED: Forces screen to smoothly scroll to the top of the viewport on page changes
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
